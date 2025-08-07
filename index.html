@@ -17,10 +17,14 @@
           <span>Weltance</span>
         </div>
         <nav class="nav">
-          <a href="#home" data-i18n="home">Home</a>
-          <a href="#product" data-i18n="view_product">View on Fourthwall</a>
-          <a href="#about" data-i18n="about">About</a>
-          <a href="#contact" data-i18n="contact">Contact</a>
+          <button
+            id="nav-toggle"
+            class="icon-btn"
+            aria-label="Menu"
+            title="Menu"
+          >
+            ☰
+          </button>
           <button
             id="theme-toggle"
             aria-label="Toggle theme"
@@ -29,10 +33,18 @@
           >
             🌙
           </button>
-          <select id="language-switcher" aria-label="Language">
-            <option value="en">EN</option>
-            <option value="tr">TR</option>
-          </select>
+
+          <div class="nav-links">
+            <a href="#home" data-i18n="home">Home</a>
+            <a href="#product" data-i18n="view_product">View on Fourthwall</a>
+            <a href="#about" data-i18n="about">About</a>
+            <a href="#contact" data-i18n="contact">Contact</a>
+
+            <select id="language-switcher" aria-label="Language">
+              <option value="en">EN</option>
+              <option value="tr">TR</option>
+            </select>
+          </div>
         </nav>
       </div>
     </header>
@@ -259,6 +271,19 @@
         const el = document.getElementById(id);
         if (el) spy.observe(el);
       });
+
+      // Hamburger toggle
+      const nav = document.querySelector(".nav");
+      document.getElementById("nav-toggle")?.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+
+      // Panelde link/dil seçince kapan
+      document
+        .querySelectorAll(".nav-links a, .nav-links select")
+        .forEach((el) => {
+          el.addEventListener("click", () => nav.classList.remove("open"));
+        });
     </script>
   </body>
 </html>

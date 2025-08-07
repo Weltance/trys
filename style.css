@@ -436,3 +436,90 @@ img {
     transform: none !important;
   }
 }
+
+/* --- NAV base --- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- CTA spacing fix --- */
+.cta h2 {
+  margin-bottom: 1.25rem;
+}
+.cta .cta-btn {
+  margin-top: 0.75rem;
+} /* buton başlıkla çakışmasın */
+
+/* --- Mobile breakpoint --- */
+@media (max-width: 640px) {
+  .header {
+    width: 96%;
+    padding: 0.6rem 0.9rem;
+    bottom: 12px;
+  }
+  .logo img {
+    width: 24px;
+    height: 24px;
+  }
+  .logo span {
+    font-size: 0.95rem;
+  }
+
+  /* hamburger görünür, link paneli kapalı */
+  #nav-toggle {
+    display: inline-flex;
+  }
+  .nav .nav-links {
+    display: none;
+  }
+
+  /* açıkken: fixed panel, bottom dock'un üstünde cam panel */
+  .nav.open .nav-links {
+    display: flex;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(12px + 64px); /* headerın biraz üstü */
+    width: 96%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+    padding: 0.75rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* link boyutları mobilde daha kompakt */
+  .nav.open .nav-links a {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+  }
+  .nav.open .nav-links a:active {
+    border-color: var(--brand-weak);
+  }
+
+  /* dil seçici panel içinde görünür */
+  .nav.open #language-switcher {
+    display: block;
+  }
+}
+
+/* Desktop: hamburger gereksiz ama sorun değil */
+@media (min-width: 641px) {
+  #nav-toggle {
+    display: none;
+  }
+}
