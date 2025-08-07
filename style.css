@@ -523,3 +523,30 @@ img {
     display: none;
   }
 }
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  .chip {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.55rem;
+  }
+  .btn {
+    padding: 0.8rem 1.1rem;
+    border-radius: 10px;
+  }
+
+  .product-card {
+    padding: 1.25rem;
+  }
+  .mock-frame {
+    height: 220px;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
