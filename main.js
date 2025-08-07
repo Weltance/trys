@@ -4,15 +4,18 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Parallax (mild)
+// Parallax (mild; desktop only / respect reduced motion)
 const px = document.querySelectorAll('[data-parallax]');
-window.addEventListener('scroll', ()=>{
-  const y = window.scrollY;
-  px.forEach(el=>{
-    const s = parseFloat(el.getAttribute('data-speed'))||0.1;
-    el.style.transform = `translateY(${y*s}px)`;
-  });
-}, { passive: true });
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (window.innerWidth > 640 && !reduced) {
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    px.forEach(el=>{
+      const s = parseFloat(el.getAttribute('data-speed'))||0.1;
+      el.style.transform = `translate3d(0, ${y*s}px, 0)`;
+    });
+  }, { passive: true });
+}
 
 // Magnetic buttons
 document.querySelectorAll('.magnetic').forEach(btn=>{
@@ -78,6 +81,6 @@ navToggle?.addEventListener('click', ()=>{
   const open = navEl.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
-document.querySelectorAll('.nav-links a, .nav-links select').forEach(el=>{
+document.querySelectorAll('.nav-links a').forEach(el=>{
   el.addEventListener('click', ()=> navEl.classList.remove('open'));
 });

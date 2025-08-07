@@ -58,6 +58,17 @@ function changeLanguage(lang){
 
 window.addEventListener('DOMContentLoaded',()=>{
   const select = document.getElementById('language-switcher');
+  const savedLang = localStorage.getItem('lang') || (select?.value || 'en');
+  if(select){
+    select.value = savedLang;
+    select.addEventListener('change', e=> {
+      const v = e.target.value;
+      localStorage.setItem('lang', v);
+      changeLanguage(v);
+    });
+  }
+  changeLanguage(savedLang);
+});
   if(select){
     select.addEventListener('change', e=> changeLanguage(e.target.value));
     changeLanguage(select.value || 'en');
