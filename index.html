@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weltance – Where Ideas Thrive</title>
     <link rel="stylesheet" href="style.css" />
-    <script defer src="lang.js"></script>
+    <script defer src="lang.js">
+      // Mobile hamburger toggle
+        const navEl = document.querySelector('.nav');
+        const navToggle = document.getElementById('nav-toggle');
+        navToggle?.addEventListener('click', ()=>{
+          navEl.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-links a, .nav-links select').forEach(el=>{
+          el.addEventListener('click', ()=> navEl.classList.remove('open'));
+        });
+    </script>
     <link rel="icon" href="./assets/logo.png" />
   </head>
   <body>
@@ -17,22 +27,32 @@
           <span>Weltance</span>
         </div>
         <nav class="nav">
-          <a href="#home">Home</a>
-          <a href="#product">Product</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
           <button
-            id="theme-toggle"
-            aria-label="Toggle theme"
+            id="nav-toggle"
             class="icon-btn"
-            title="Toggle theme"
+            aria-label="Menu"
+            title="Menu"
           >
-            🌙
+            ☰
           </button>
-          <select id="language-switcher" aria-label="Language">
-            <option value="en">EN</option>
-            <option value="tr">TR</option>
-          </select>
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#product">Product</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <select id="language-switcher" aria-label="Language">
+              <option value="en">EN</option>
+              <option value="tr">TR</option>
+            </select>
+            <button
+              id="theme-toggle"
+              aria-label="Toggle theme"
+              class="icon-btn"
+              title="Toggle theme"
+            >
+              🌙
+            </button>
+          </div>
         </nav>
       </div>
     </header>
