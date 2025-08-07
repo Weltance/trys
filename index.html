@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weltance – Where Ideas Thrive</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="lang.js"></script>
+    <link rel="icon" href="./assets/logo.png" />
+  </head>
+  <body>
+    <!-- BOTTOM DOCK NAVBAR -->
+    <header class="header">
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="./assets/logo.png" alt="Weltance Logo" />
+          <span>Weltance</span>
+        </div>
+        <nav class="nav">
+          <a href="#home" data-i18n="home">Home</a>
+          <a href="#about" data-i18n="about">About</a>
+          <a href="#contact" data-i18n="contact">Contact</a>
+          <select id="language-switcher" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="tr">TR</option>
+          </select>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO (FULLSCREEN) -->
+    <section class="hero pattern-bg" id="home">
+      <div class="decor decor-1"></div>
+      <div class="decor decor-2"></div>
+      <div class="container hero-inner reveal">
+        <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+          Build your digital empire with clarity and confidence.
+        </p>
+
+        <div class="hero-chips">
+          <span class="chip" data-i18n="chip_actionable">Actionable</span>
+          <span class="chip" data-i18n="chip_nofluff">No Fluff</span>
+          <span class="chip" data-i18n="chip_global">Global-Ready</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a
+            href="#product"
+            class="btn btn-primary"
+            data-i18n="hero_cta_primary"
+            >Explore the Pack</a
+          >
+          <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_secondary"
+            >Why Weltance</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="highlights reveal">
+      <div class="container">
+        <h2 class="section-title" data-i18n="highlights_title">
+          Built for momentum
+        </h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">⚡</div>
+            <h3 data-i18n="highlight_1_t">Start fast</h3>
+            <p data-i18n="highlight_1_d">
+              Zero-to-one guidance you can apply today.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🎯</div>
+            <h3 data-i18n="highlight_2_t">Clarity first</h3>
+            <p data-i18n="highlight_2_d">
+              No noise. Only what moves the needle.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🌍</div>
+            <h3 data-i18n="highlight_3_t">Global scale</h3>
+            <p data-i18n="highlight_3_d">
+              Structure that grows with your brand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT (FULLSCREEN FEEL) -->
+    <section class="product-section pattern-soft reveal" id="product">
+      <div class="container">
+        <div class="product-card">
+          <div class="product-mock">
+            <div class="mock-frame">
+              <div class="mock-gradient"></div>
+              <div class="mock-label">Weltance Builder Pack</div>
+            </div>
+          </div>
+          <h2 class="product-title">Weltance Builder Pack</h2>
+          <p class="product-description" data-i18n="product_desc">
+            From Nobody to Brand. A powerful starter kit for creators who want
+            to build authority from zero.
+          </p>
+          <a href="#" class="product-btn" data-i18n="view_product"
+            >View on Fourthwall</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial reveal">
+      <div class="container">
+        <h2 class="section-title" data-i18n="testimonial_title">
+          What early users say
+        </h2>
+        <blockquote class="quote">
+          <p data-i18n="testimonial_quote">
+            “Clean. Direct. Finally a pack that makes me ship.”
+          </p>
+          <cite data-i18n="testimonial_author">— Creator, Beta Cohort</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA (FULLSCREEN FEEL) -->
+    <section class="cta reveal">
+      <div class="container">
+        <h2 data-i18n="cta_title">Ready to start your journey?</h2>
+        <a href="#" class="cta-btn" data-i18n="cta_button">Start Now</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <p class="copyright">© 2025 Weltance. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+              alt="YouTube"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"
+              alt="X"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+              alt="TikTok"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+              alt="Instagram"
+          /></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Minimal scroll-reveal -->
+    <script>
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
