@@ -17,14 +17,10 @@
           <span>Weltance</span>
         </div>
         <nav class="nav">
-          <button
-            id="nav-toggle"
-            class="icon-btn"
-            aria-label="Menu"
-            title="Menu"
-          >
-            ☰
-          </button>
+          <a href="#home">Home</a>
+          <a href="#product">Product</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
           <button
             id="theme-toggle"
             aria-label="Toggle theme"
@@ -33,18 +29,10 @@
           >
             🌙
           </button>
-
-          <div class="nav-links">
-            <a href="#home" data-i18n="home">Home</a>
-            <a href="#product" data-i18n="view_product">View on Fourthwall</a>
-            <a href="#about" data-i18n="about">About</a>
-            <a href="#contact" data-i18n="contact">Contact</a>
-
-            <select id="language-switcher" aria-label="Language">
-              <option value="en">EN</option>
-              <option value="tr">TR</option>
-            </select>
-          </div>
+          <select id="language-switcher" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="tr">TR</option>
+          </select>
         </nav>
       </div>
     </header>
@@ -57,27 +45,22 @@
       <div class="grain"></div>
 
       <div class="container hero-inner reveal">
-        <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
+        <h1 class="hero-title">Where Ideas Thrive</h1>
+        <p class="hero-subtitle">
           Build your digital empire with clarity and confidence.
         </p>
 
         <div class="hero-chips">
-          <span class="chip" data-i18n="chip_actionable">Actionable</span>
-          <span class="chip" data-i18n="chip_nofluff">No Fluff</span>
-          <span class="chip" data-i18n="chip_global">Global-Ready</span>
+          <span class="chip">Actionable</span>
+          <span class="chip">No Fluff</span>
+          <span class="chip">Global-Ready</span>
         </div>
 
         <div class="hero-ctas">
-          <a
-            href="#product"
-            class="btn btn-primary magnetic"
-            data-i18n="hero_cta_primary"
+          <a href="#product" class="btn btn-primary magnetic"
             >Explore the Pack</a
           >
-          <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_secondary"
-            >Why Weltance</a
-          >
+          <a href="#about" class="btn btn-ghost">Why Weltance</a>
         </div>
       </div>
     </section>
@@ -85,31 +68,62 @@
     <!-- HIGHLIGHTS (GLASS CARDS) -->
     <section class="highlights reveal" id="about">
       <div class="container">
-        <h2 class="section-title" data-i18n="highlights_title">
-          Built for momentum
-        </h2>
+        <h2 class="section-title">Built for momentum</h2>
         <div class="grid-3">
           <div class="card glass">
             <div class="icon">⚡</div>
-            <h3 data-i18n="highlight_1_t">Start fast</h3>
-            <p data-i18n="highlight_1_d">
-              Zero-to-one guidance you can apply today.
-            </p>
+            <h3>Start fast</h3>
+            <p>Zero-to-one guidance you can apply today.</p>
           </div>
           <div class="card glass">
             <div class="icon">🎯</div>
-            <h3 data-i18n="highlight_2_t">Clarity first</h3>
-            <p data-i18n="highlight_2_d">
-              No noise. Only what moves the needle.
-            </p>
+            <h3>Clarity first</h3>
+            <p>No noise. Only what moves the needle.</p>
           </div>
           <div class="card glass">
             <div class="icon">🌍</div>
-            <h3 data-i18n="highlight_3_t">Global scale</h3>
-            <p data-i18n="highlight_3_d">
-              Structure that grows with your brand.
-            </p>
+            <h3>Global scale</h3>
+            <p>Structure that grows with your brand.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST (LOGOS RIBBON) -->
+    <section class="reveal" aria-label="as-seen-in">
+      <div class="container" style="overflow: auto">
+        <div
+          style="display: flex; gap: 2rem; opacity: 0.8; white-space: nowrap"
+        >
+          <span>● Product Hunt</span>
+          <span>● Indie Hackers</span>
+          <span>● Hacker News</span>
+          <span>● Designer News</span>
+          <span>● BetaList</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="reveal">
+      <div
+        class="container"
+        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem"
+      >
+        <div class="card glass" style="text-align: center; padding: 1.5rem">
+          <div class="icon">🚀</div>
+          <div class="count" data-target="500">0</div>
+          <p>Creators started</p>
+        </div>
+        <div class="card glass" style="text-align: center; padding: 1.5rem">
+          <div class="icon">📦</div>
+          <div class="count" data-target="120">0</div>
+          <p>Modules inside</p>
+        </div>
+        <div class="card glass" style="text-align: center; padding: 1.5rem">
+          <div class="icon">⭐</div>
+          <div class="count" data-target="98">0</div>
+          <p>Satisfaction (%)</p>
         </div>
       </div>
     </section>
@@ -125,39 +139,183 @@
             </div>
           </div>
           <h2 class="product-title">Weltance Builder Pack</h2>
-          <p class="product-description" data-i18n="product_desc">
+          <p class="product-description">
             From Nobody to Brand. A powerful starter kit for creators who want
             to build authority from zero.
           </p>
-          <a href="#" class="product-btn" data-i18n="view_product"
-            >View on Fourthwall</a
-          >
+          <a href="#" class="product-btn">View on Fourthwall</a>
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="testimonial reveal">
+    <!-- FEATURE GRID (6) -->
+    <section class="reveal">
       <div class="container">
-        <h2 class="section-title" data-i18n="testimonial_title">
-          What early users say
-        </h2>
-        <blockquote class="quote glass">
-          <p data-i18n="testimonial_quote">
-            “Clean. Direct. Finally a pack that makes me ship.”
-          </p>
-          <cite data-i18n="testimonial_author">— Creator, Beta Cohort</cite>
-        </blockquote>
+        <h2 class="section-title">What you get</h2>
+        <div class="grid-3">
+          <div class="card glass">
+            <h3>Brand Playbooks</h3>
+            <p>Positioning, narrative, voice.</p>
+          </div>
+          <div class="card glass">
+            <h3>Launch Engines</h3>
+            <p>Repeatable, compounding launches.</p>
+          </div>
+          <div class="card glass">
+            <h3>Audience Ops</h3>
+            <p>Acquisition, retention, referrals.</p>
+          </div>
+          <div class="card glass">
+            <h3>Monetization</h3>
+            <p>Offers, pricing, funnels.</p>
+          </div>
+          <div class="card glass">
+            <h3>Templates</h3>
+            <p>Docs, scripts, checklists.</p>
+          </div>
+          <div class="card glass">
+            <h3>Case Studies</h3>
+            <p>Real-world breakdowns.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="reveal">
+      <div class="container">
+        <h2 class="section-title">Roadmap</h2>
+        <ul style="list-style: none; display: grid; gap: 1rem">
+          <li class="card glass" style="padding: 1rem">
+            Q3 • Beta cohort & feedback
+          </li>
+          <li class="card glass" style="padding: 1rem">
+            Q4 • Community space & weekly sprints
+          </li>
+          <li class="card glass" style="padding: 1rem">
+            Q1 • Advanced modules & expert sessions
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ (no-JS via details/summary) -->
+    <section class="reveal">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <div class="grid-3">
+          <details class="card glass">
+            <summary><strong>Who is this for?</strong></summary>
+            <p>Creators, solopreneurs, small teams.</p>
+          </details>
+          <details class="card glass">
+            <summary><strong>Refunds?</strong></summary>
+            <p>14-day, no-questions-asked.</p>
+          </details>
+          <details class="card glass">
+            <summary><strong>Updates?</strong></summary>
+            <p>Continuous; pay once, get all.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="reveal">
+      <div class="container">
+        <h2 class="section-title">Pricing</h2>
+        <div class="grid-3">
+          <div class="card glass" style="text-align: center; padding: 1.5rem">
+            <h3>Starter</h3>
+            <p>Core modules</p>
+            <p style="font-size: 1.8rem; font-weight: 800">$49</p>
+            <a class="btn btn-ghost" href="#">Choose</a>
+          </div>
+          <div
+            class="card glass"
+            style="
+              text-align: center;
+              padding: 1.5rem;
+              border: 2px solid #2c4f87;
+            "
+          >
+            <h3>Pro</h3>
+            <p>All modules + updates</p>
+            <p style="font-size: 1.8rem; font-weight: 800">$99</p>
+            <a class="btn btn-primary" href="#">Choose</a>
+          </div>
+          <div class="card glass" style="text-align: center; padding: 1.5rem">
+            <h3>Empire</h3>
+            <p>Pro + coaching slots</p>
+            <p style="font-size: 1.8rem; font-weight: 800">$199</p>
+            <a class="btn btn-ghost" href="#">Choose</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="reveal">
+      <div class="container">
+        <h2 class="section-title">Get one high-signal email/week</h2>
+        <form
+          class="glass"
+          style="
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 12px;
+          "
+        >
+          <input
+            type="email"
+            placeholder="you@brand.com"
+            required
+            style="
+              padding: 0.8rem 1rem;
+              border: 1px solid var(--line);
+              border-radius: 10px;
+              min-width: 260px;
+              background: transparent;
+              color: inherit;
+            "
+          />
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- BLOG TEASERS -->
+    <section class="reveal">
+      <div class="container">
+        <h2 class="section-title">Latest notes</h2>
+        <div class="grid-3">
+          <article class="card glass">
+            <h3>Zero→One Brand</h3>
+            <p>Positioning in 30 minutes.</p>
+            <a class="btn btn-ghost" href="#">Read</a>
+          </article>
+          <article class="card glass">
+            <h3>Launch System</h3>
+            <p>Repeatable, with compounding.</p>
+            <a class="btn btn-ghost" href="#">Read</a>
+          </article>
+          <article class="card glass">
+            <h3>Offer Math</h3>
+            <p>Build pricing power, not discounts.</p>
+            <a class="btn btn-ghost" href="#">Read</a>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- CTA (FULLSCREEN FEEL) -->
     <section class="cta reveal" id="contact">
       <div class="container">
-        <h2 data-i18n="cta_title">Ready to start your journey?</h2>
-        <a href="#" class="cta-btn magnetic" data-i18n="cta_button"
-          >Start Now</a
-        >
+        <h2>Ready to start your journey?</h2>
+        <a href="#" class="cta-btn magnetic">Start Now</a>
       </div>
     </section>
 
@@ -190,7 +348,7 @@
       </div>
     </footer>
 
-    <!-- Minimal interactions (reveal, parallax, magnetic, theme, scrollspy) -->
+    <!-- Interactions: reveal, parallax, magnetic, theme, scrollspy, counters -->
     <script>
       // Reveal on scroll
       const io = new IntersectionObserver(
@@ -212,8 +370,8 @@
         () => {
           const y = window.scrollY;
           px.forEach((el) => {
-            const speed = parseFloat(el.getAttribute("data-speed")) || 0.1;
-            el.style.transform = `translateY(${y * speed}px)`;
+            const s = parseFloat(el.getAttribute("data-speed")) || 0.1;
+            el.style.transform = `translateY(${y * s}px)`;
           });
         },
         { passive: true }
@@ -221,18 +379,14 @@
 
       // Magnetic buttons
       document.querySelectorAll(".magnetic").forEach((btn) => {
-        const strength = 16;
+        const k = 16;
         btn.addEventListener("mousemove", (e) => {
           const r = btn.getBoundingClientRect();
-          const x = e.clientX - (r.left + r.width / 2);
-          const y = e.clientY - (r.top + r.height / 2);
-          btn.style.transform = `translate(${x / strength}px, ${
-            y / strength
-          }px)`;
+          const x = e.clientX - (r.left + r.width / 2),
+            y = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = `translate(${x / k}px,${y / k}px)`;
         });
-        btn.addEventListener("mouseleave", () => {
-          btn.style.transform = "";
-        });
+        btn.addEventListener("mouseleave", () => (btn.style.transform = ""));
       });
 
       // Theme toggle (persisted)
@@ -250,16 +404,16 @@
         localStorage.setItem("theme", dark ? "dark" : "light");
       });
 
-      // Scrollspy (active link)
-      const sections = ["home", "product", "about", "contact"];
+      // Scrollspy
+      const ids = ["home", "product", "about", "contact"];
       const links = new Map(
-        sections.map((id) => [id, document.querySelector(`a[href="#${id}"]`)])
+        ids.map((id) => [id, document.querySelector(`a[href="#${id}"]`)])
       );
       const spy = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
+        (es) => {
+          es.forEach((en) => {
+            if (en.isIntersecting) {
+              const id = en.target.id;
               links.forEach((l) => l?.classList.remove("active"));
               links.get(id)?.classList.add("active");
             }
@@ -267,23 +421,42 @@
         },
         { rootMargin: "-40% 0px -50% 0px", threshold: 0.01 }
       );
-      sections.forEach((id) => {
+      ids.forEach((id) => {
         const el = document.getElementById(id);
         if (el) spy.observe(el);
       });
 
-      // Hamburger toggle
-      const nav = document.querySelector(".nav");
-      document.getElementById("nav-toggle")?.addEventListener("click", () => {
-        nav.classList.toggle("open");
-      });
+      // Counters
+      const counters = document.querySelectorAll(".count");
+      const io2 = new IntersectionObserver(
+        (es) => {
+          es.forEach((en) => {
+            if (en.isIntersecting) {
+              const el = en.target;
+              const target = parseInt(el.dataset.target || "0", 10);
+              let n = 0;
+              const inc = Math.max(1, Math.floor(target / 60));
+              const t = setInterval(() => {
+                n += inc;
+                if (n >= target) {
+                  n = target;
+                  clearInterval(t);
+                }
+                el.textContent = n;
+              }, 16);
+              io2.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      counters.forEach((c) => io2.observe(c));
 
-      // Panelde link/dil seçince kapan
-      document
-        .querySelectorAll(".nav-links a, .nav-links select")
-        .forEach((el) => {
-          el.addEventListener("click", () => nav.classList.remove("open"));
-        });
+      // Newsletter (prevent page jump demo)
+      document.querySelector("form")?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Subscribed!");
+      });
     </script>
   </body>
 </html>
