@@ -1,16 +1,10 @@
-// Reveal on scroll
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
-}, { threshold: 0.15 });
+// Basic reveals & interactions (unchanged essentials)
+const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Micro-animations for items
-const ioItems = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); ioItems.unobserve(e.target); } });
-}, { threshold: 0.25 });
+const ioItems = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); ioItems.unobserve(e.target); } }); }, { threshold: 0.25 });
 document.querySelectorAll('.micro-animate .anim-item').forEach(el=> ioItems.observe(el));
 
-// Magnetic buttons
 document.querySelectorAll('.magnetic').forEach(btn=>{
   const k = 16;
   btn.addEventListener('mousemove', e=>{
@@ -21,7 +15,6 @@ document.querySelectorAll('.magnetic').forEach(btn=>{
   btn.addEventListener('mouseleave', ()=> btn.style.transform='');
 });
 
-// Theme toggle
 const root = document.documentElement;
 const themeBtn = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('theme');
@@ -33,21 +26,13 @@ if(themeBtn){ setEmoji(); themeBtn.addEventListener('click', ()=>{
   setEmoji();
 });}
 
-// Scrollspy highlight
 const ids=['home','product','about','contact'];
 const links = new Map(ids.map(id=>[id, document.querySelector(`a[href="#${id}"]`)]));
 const spy=new IntersectionObserver((es)=>{
-  es.forEach(en=>{
-    if(en.isIntersecting){
-      const id=en.target.id;
-      links.forEach(l=>l?.classList.remove('active'));
-      links.get(id)?.classList.add('active');
-    }
-  });
+  es.forEach(en=>{ if(en.isIntersecting){ const id=en.target.id; links.forEach(l=>l?.classList.remove('active')); links.get(id)?.classList.add('active'); } });
 },{rootMargin:'-40% 0px -50% 0px', threshold:0.01});
 ids.forEach(id=>{ const el=document.getElementById(id); if(el) spy.observe(el); });
 
-// Counters
 const counters=document.querySelectorAll('.count');
 const io2=new IntersectionObserver((es)=>{
   es.forEach(en=>{
@@ -61,25 +46,15 @@ const io2=new IntersectionObserver((es)=>{
 },{threshold:0.4});
 counters.forEach(c=>io2.observe(c));
 
-// Newsletter demo
-document.getElementById('newsletter-form')?.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  alert('Subscribed!');
-});
+document.getElementById('newsletter-form')?.addEventListener('submit', (e)=>{ e.preventDefault(); alert('Subscribed!'); });
 
-// Mobile hamburger
 const navEl = document.querySelector('.nav');
 const navToggle = document.getElementById('nav-toggle');
-navToggle?.addEventListener('click', (ev)=>{
-  ev.stopPropagation();
-  const open = navEl.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
+navToggle?.addEventListener('click', (ev)=>{ ev.stopPropagation(); const open = navEl.classList.toggle('open'); navToggle.setAttribute('aria-expanded', open ? 'true' : 'false'); });
 document.querySelectorAll('.nav-links a').forEach(el=> el.addEventListener('click', ()=> navEl.classList.remove('open')));
 document.querySelector('.nav-links')?.addEventListener('click', e=> e.stopPropagation());
 document.addEventListener('click', ()=> navEl.classList.remove('open'));
 
-// Typed text
 window.startTyped = function(lang){
   const el = document.getElementById('typed');
   if(!el) return;
@@ -96,12 +71,8 @@ window.startTyped = function(lang){
   }
   tick();
 };
-window.addEventListener('DOMContentLoaded', ()=>{
-  const saved = localStorage.getItem('lang') || 'en';
-  window.startTyped(saved);
-});
+window.addEventListener('DOMContentLoaded', ()=>{ const saved = localStorage.getItem('lang') || 'en'; window.startTyped(saved); });
 
-// Testimonials carousel
 (function(){
   const carousel = document.getElementById('testimonial-carousel');
   if(!carousel) return;
@@ -116,20 +87,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
   carousel.addEventListener('mouseleave', ()=> timer = setInterval(()=>{ index = (index+1)%slides.length; update(); }, 5000));
 })();
 
-// Mouse follower
-(function(){
-  const dot = document.getElementById('dot'); if(!dot) return;
-  let x=0, y=0, tx=0, ty=0;
-  document.addEventListener('mousemove', (e)=>{ tx=e.clientX; ty=e.clientY; });
-  function loop(){
-    x += (tx - x)*0.15; y += (ty - y)*0.15;
-    dot.style.transform = `translate(${x}px, ${y}px)`;
-    requestAnimationFrame(loop);
-  }
-  loop();
-})();
+(function(){ const dot = document.getElementById('dot'); if(!dot) return; let x=0, y=0, tx=0, ty=0; document.addEventListener('mousemove', (e)=>{ tx=e.clientX; ty=e.clientY; }); function loop(){ x += (tx - x)*0.15; y += (ty - y)*0.15; dot.style.transform = `translate(${x}px, ${y}px)`; requestAnimationFrame(loop);} loop(); })();
 
-// Back to top + scroll progress
 (function(){
   const btn = document.getElementById('to-top');
   const bar = document.getElementById('scroll-progress');
@@ -145,7 +104,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   btn?.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
 })();
 
-// Perlin-noise Topography
+// === Perlin Topography (smoothed, rounded, rgba) ===
 (function(){
   const canvas = document.getElementById('hero-canvas');
   if(!canvas) return;
@@ -173,9 +132,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
   for(let i=0;i<256;i++) perm[i]=i;
   for(let i=255;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=perm[i]; perm[i]=perm[j]; perm[j]=t; }
   for(let i=0;i<256;i++) perm[i+256]=perm[i];
-  function fade(t){ return t*t*t*(t*(t*6-15)+10); }
-  function lerp(a,b,t){ return a + (b-a)*t; }
-  function grad(hash, x,y){ const h=hash&3; const u=h<2?x:y; const v=h<2?y:x; return ((h&1)?-u:u) + ((h&2)?-2*v:2*v)/2; }
+  const fade = t=> t*t*t*(t*(t*6-15)+10);
+  const lerp = (a,b,t)=> a + (b-a)*t;
+  function grad(hash,x,y){ const h=hash&3; const u=h<2?x:y; const v=h<2?y:x; return ((h&1)?-u:u) + ((h&2)?-2*v:2*v)/2; }
   function perlin(x,y){
     const X=Math.floor(x)&255, Y=Math.floor(y)&255;
     x-=Math.floor(x); y-=Math.floor(y);
@@ -184,22 +143,52 @@ window.addEventListener('DOMContentLoaded', ()=>{
     return lerp(lerp(grad(aa,x,y), grad(ba,x-1,y), u), lerp(grad(ab,x,y-1), grad(bb,x-1,y-1), u), v);
   }
 
+  function hexToRgb(hex){
+    hex = hex.trim();
+    if(hex[0]==='#') hex = hex.slice(1);
+    if(hex.length===3) hex = hex.split('').map(c=>c+c).join('');
+    const num = parseInt(hex,16);
+    const r = (num>>16)&255, g=(num>>8)&255, b=num&255;
+    return [r,g,b];
+  }
+
   function draw(){
     ctx.clearRect(0,0,w,h);
-    const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand').trim() || '#2c4f87';
-    ctx.lineWidth = 1;
-    const density = 22; // vertical spacing of contour bands
-    const scale = 0.012; // noise scale
+    const brandStr = getComputedStyle(document.documentElement).getPropertyValue('--brand').trim() || '#2c4f87';
+    const [r,g,b] = hexToRgb(brandStr);
+    ctx.lineWidth = 1.25;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    const density = 22;     // vertical spacing between contour bands
+    const scale = 0.012;    // noise scale
+    const stepX = 6;        // sample step in x for smoothness
+
     for(let y=0; y<h + density; y += density){
-      ctx.beginPath();
-      for(let x=0; x<=w; x+=8){
-        const n = perlin((x+t*0.5)*scale, (y-t*0.3)*scale);
-        const m = perlin((x-500-t*0.2)*scale*0.6, (y+200+t*0.4)*scale*0.6);
+      const pts = [];
+      for(let x=0; x<=w; x+=stepX){
+        const n = perlin((x+t*0.45)*scale, (y-t*0.28)*scale);
+        const m = perlin((x-500-t*0.18)*scale*0.65, (y+200+t*0.36)*scale*0.65);
         const offset = (n*18 + m*10);
         const yy = y + offset;
-        if(x===0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
+        pts.push({x, y:yy});
       }
-      ctx.strokeStyle = brand + '55';
+      // smooth path with quadratic curves
+      ctx.beginPath();
+      if(pts.length){
+        ctx.moveTo(pts[0].x, pts[0].y);
+        for(let i=1;i<pts.length-1;i++){
+          const p0 = pts[i];
+          const p1 = pts[i+1];
+          const mx = (p0.x + p1.x)/2;
+          const my = (p0.y + p1.y)/2;
+          ctx.quadraticCurveTo(p0.x, p0.y, mx, my);
+        }
+        // last segment
+        const last = pts[pts.length-1];
+        ctx.lineTo(last.x, last.y);
+      }
+      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 0.34)`; // brand hue with alpha (typo fix below)
       ctx.stroke();
     }
     t += 0.8;
