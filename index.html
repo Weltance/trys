@@ -1,329 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weltance – Where Ideas Thrive</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="./assets/logo.png" />
-    <script defer src="lang.js"></script>
-    <script defer src="main.js"></script>
-  </head>
-  <body>
-    <!-- BOTTOM DOCK NAVBAR -->
-    <header class="header">
-      <div class="container nav-container">
-        <div class="logo">
-          <img src="./assets/logo.png" alt="Weltance Logo" />
-          <span>Weltance</span>
-        </div>
-        <nav class="nav" aria-label="Primary">
-          <!-- Controls always visible -->
-          <button
-            id="nav-toggle"
-            class="icon-btn"
-            aria-label="Menu"
-            aria-expanded="false"
-            title="Menu"
-          >
-            ☰
-          </button>
-          <button
-            id="theme-toggle"
-            class="icon-btn"
-            aria-label="Toggle theme"
-            title="Toggle theme"
-          >
-            🌙
-          </button>
-
-          <!-- Collapsible links -->
-          <div class="nav-links">
-            <a href="#home" data-i18n="home">Home</a>
-            <a href="#product" data-i18n="view_product">View on Fourthwall</a>
-            <a href="#about" data-i18n="about">About</a>
-            <a href="#contact" data-i18n="contact">Contact</a>
-            <select id="language-switcher" aria-label="Language">
-              <option value="en">EN</option>
-              <option value="tr">TR</option>
-            </select>
-          </div>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weltance – Where Ideas Thrive</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="./assets/logo.png" />
+  <script defer src="lang.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <!-- BOTTOM DOCK NAVBAR -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <img src="./assets/logo.png" alt="Weltance Logo" />
+        <span>Weltance</span>
       </div>
-    </header>
+      <nav class="nav" aria-label="Primary">
+        <button id="nav-toggle" class="icon-btn" aria-label="Menu" aria-expanded="false" title="Menu">☰</button>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <div class="nav-links">
+          <a href="#home" data-i18n="nav_home">Home</a>
+          <a href="#product" data-i18n="nav_product">Product</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
+          <select id="language-switcher" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="tr">TR</option>
+            <option value="fr">FR</option>
+            <option value="de">DE</option>
+            <option value="ru">RU</option>
+            <option value="ar">AR</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <!-- HERO (FULLSCREEN, MINIMAL-FUTURISTIC) -->
-    <section class="hero pattern-bg" id="home">
-      <div class="decor decor-1" data-parallax data-speed="0.12"></div>
-      <div class="decor decor-2" data-parallax data-speed="-0.08"></div>
-      <div class="grain"></div>
+  <!-- HERO -->
+  <section class="hero pattern-bg" id="home">
+    <div class="decor decor-1" data-parallax data-speed="0.12"></div>
+    <div class="decor decor-2" data-parallax data-speed="-0.08"></div>
+    <div class="grain"></div>
 
-      <div class="container hero-inner reveal">
-        <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
-          Build your digital empire with clarity and confidence.
+    <div class="container hero-inner reveal">
+      <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">Build your digital empire with clarity and confidence.</p>
+
+      <div class="hero-chips">
+        <span class="chip" data-i18n="chip_actionable">Actionable</span>
+        <span class="chip" data-i18n="chip_nofluff">No Fluff</span>
+        <span class="chip" data-i18n="chip_global">Global-Ready</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="#product" class="btn btn-primary magnetic" data-i18n="hero_cta_primary">Explore the Pack</a>
+        <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_secondary">Why Weltance</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights reveal" id="about">
+    <div class="container">
+      <h2 class="section-title" data-i18n="highlights_title">Built for momentum</h2>
+      <div class="grid-3">
+        <div class="card glass">
+          <div class="icon">⚡</div>
+          <h3 data-i18n="highlight_1_t">Start fast</h3>
+          <p data-i18n="highlight_1_d">Zero-to-one guidance you can apply today.</p>
+        </div>
+        <div class="card glass">
+          <div class="icon">🎯</div>
+          <h3 data-i18n="highlight_2_t">Clarity first</h3>
+          <p data-i18n="highlight_2_d">No noise. Only what moves the needle.</p>
+        </div>
+        <div class="card glass">
+          <div class="icon">🌍</div>
+          <h3 data-i18n="highlight_3_t">Global scale</h3>
+          <p data-i18n="highlight_3_d">Structure that grows with your brand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats reveal">
+    <div class="container grid-3">
+      <div class="card glass stat">
+        <div class="icon">🚀</div>
+        <div class="count" data-target="500">0</div>
+        <p data-i18n="stats_creators">Creators started</p>
+      </div>
+      <div class="card glass stat">
+        <div class="icon">📦</div>
+        <div class="count" data-target="120">0</div>
+        <p data-i18n="stats_modules">Modules inside</p>
+      </div>
+      <div class="card glass stat">
+        <div class="icon">⭐</div>
+        <div class="count" data-target="98">0</div>
+        <p data-i18n="stats_satisfaction">Satisfaction (%)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="product-section pattern-soft reveal" id="product">
+    <div class="container">
+      <div class="product-card glass">
+        <div class="product-mock">
+          <div class="mock-frame">
+            <div class="mock-gradient"></div>
+            <div class="mock-label" data-i18n="product_title">Weltance Builder Pack</div>
+          </div>
+        </div>
+        <h2 class="product-title" data-i18n="product_title">Weltance Builder Pack</h2>
+        <p class="product-description" data-i18n="product_desc">
+          From Nobody to Brand. A powerful starter kit for creators who want to build authority from zero.
         </p>
-
-        <div class="hero-chips">
-          <span class="chip" data-i18n="chip_actionable">Actionable</span>
-          <span class="chip" data-i18n="chip_nofluff">No Fluff</span>
-          <span class="chip" data-i18n="chip_global">Global-Ready</span>
-        </div>
-
-        <div class="hero-ctas">
-          <a
-            href="#product"
-            class="btn btn-primary magnetic"
-            data-i18n="hero_cta_primary"
-            >Explore the Pack</a
-          >
-          <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_secondary"
-            >Why Weltance</a
-          >
-        </div>
+        <a href="#" class="product-btn" data-i18n="view_product">View on Fourthwall</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- HIGHLIGHTS (GLASS CARDS) -->
-    <section class="highlights reveal" id="about">
-      <div class="container">
-        <h2 class="section-title" data-i18n="highlights_title">
-          Built for momentum
-        </h2>
-        <div class="grid-3">
-          <div class="card glass">
-            <div class="icon">⚡</div>
-            <h3 data-i18n="highlight_1_t">Start fast</h3>
-            <p data-i18n="highlight_1_d">
-              Zero-to-one guidance you can apply today.
-            </p>
-          </div>
-          <div class="card glass">
-            <div class="icon">🎯</div>
-            <h3 data-i18n="highlight_2_t">Clarity first</h3>
-            <p data-i18n="highlight_2_d">
-              No noise. Only what moves the needle.
-            </p>
-          </div>
-          <div class="card glass">
-            <div class="icon">🌍</div>
-            <h3 data-i18n="highlight_3_t">Global scale</h3>
-            <p data-i18n="highlight_3_d">
-              Structure that grows with your brand.
-            </p>
-          </div>
-        </div>
+  <!-- FEATURES -->
+  <section class="features reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="features_title">What you get</h2>
+      <div class="grid-3">
+        <div class="card glass"><h3 data-i18n="feature_1_t">Brand Playbooks</h3><p data-i18n="feature_1_d">Positioning, narrative, voice.</p></div>
+        <div class="card glass"><h3 data-i18n="feature_2_t">Launch Engines</h3><p data-i18n="feature_2_d">Repeatable, compounding launches.</p></div>
+        <div class="card glass"><h3 data-i18n="feature_3_t">Audience Ops</h3><p data-i18n="feature_3_d">Acquisition, retention, referrals.</p></div>
+        <div class="card glass"><h3 data-i18n="feature_4_t">Monetization</h3><p data-i18n="feature_4_d">Offers, pricing, funnels.</p></div>
+        <div class="card glass"><h3 data-i18n="feature_5_t">Templates</h3><p data-i18n="feature_5_d">Docs, scripts, checklists.</p></div>
+        <div class="card glass"><h3 data-i18n="feature_6_t">Case Studies</h3><p data-i18n="feature_6_d">Real-world breakdowns.</p></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- STATS -->
-    <section class="stats reveal">
-      <div class="container grid-3">
-        <div class="card glass stat">
-          <div class="icon">🚀</div>
-          <div class="count" data-target="500">0</div>
-          <p>Creators started</p>
+  <!-- ROADMAP -->
+  <section class="roadmap reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="roadmap_title">Roadmap</h2>
+      <ul class="roadmap-list">
+        <li class="card glass" data-i18n="roadmap_1">Q3 • Beta cohort & feedback</li>
+        <li class="card glass" data-i18n="roadmap_2">Q4 • Community space & weekly sprints</li>
+        <li class="card glass" data-i18n="roadmap_3">Q1 • Advanced modules & expert sessions</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="faq_title">FAQ</h2>
+      <div class="grid-3">
+        <details class="card glass"><summary data-i18n="faq_1_q"><strong>Who is this for?</strong></summary><p data-i18n="faq_1_a">Creators, solopreneurs, small teams.</p></details>
+        <details class="card glass"><summary data-i18n="faq_2_q"><strong>Refunds?</strong></summary><p data-i18n="faq_2_a">14-day, no-questions-asked.</p></details>
+        <details class="card glass"><summary data-i18n="faq_3_q"><strong>Updates?</strong></summary><p data-i18n="faq_3_a">Continuous; pay once, get all.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="pricing_title">Pricing</h2>
+      <div class="grid-3">
+        <div class="card glass price">
+          <h3 data-i18n="plan_starter_t">Starter</h3>
+          <p data-i18n="plan_starter_d">Core modules</p>
+          <p class="price-tag" data-i18n="price_starter">$49</p>
+          <a class="btn btn-ghost" href="#" data-i18n="choose_btn">Choose</a>
         </div>
-        <div class="card glass stat">
-          <div class="icon">📦</div>
-          <div class="count" data-target="120">0</div>
-          <p>Modules inside</p>
+        <div class="card glass price featured">
+          <h3 data-i18n="plan_pro_t">Pro</h3>
+          <p data-i18n="plan_pro_d">All modules + updates</p>
+          <p class="price-tag" data-i18n="price_pro">$99</p>
+          <a class="btn btn-primary" href="#" data-i18n="choose_btn">Choose</a>
         </div>
-        <div class="card glass stat">
-          <div class="icon">⭐</div>
-          <div class="count" data-target="98">0</div>
-          <p>Satisfaction (%)</p>
+        <div class="card glass price">
+          <h3 data-i18n="plan_empire_t">Empire</h3>
+          <p data-i18n="plan_empire_d">Pro + coaching slots</p>
+          <p class="price-tag" data-i18n="price_empire">$199</p>
+          <a class="btn btn-ghost" href="#" data-i18n="choose_btn">Choose</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PRODUCT (GLASS MOCKUP) -->
-    <section class="product-section pattern-soft reveal" id="product">
-      <div class="container">
-        <div class="product-card glass">
-          <div class="product-mock">
-            <div class="mock-frame">
-              <div class="mock-gradient"></div>
-              <div class="mock-label">Weltance Builder Pack</div>
-            </div>
-          </div>
-          <h2 class="product-title">Weltance Builder Pack</h2>
-          <p class="product-description" data-i18n="product_desc">
-            From Nobody to Brand. A powerful starter kit for creators who want
-            to build authority from zero.
-          </p>
-          <a href="#" class="product-btn" data-i18n="view_product"
-            >View on Fourthwall</a
-          >
-        </div>
-      </div>
-    </section>
+  <!-- NEWSLETTER -->
+  <section class="newsletter reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="newsletter_title">Get one high-signal email/week</h2>
+      <form class="glass form" id="newsletter-form">
+        <input type="email" placeholder="you@brand.com" required data-i18n-ph="email_placeholder">
+        <button class="btn btn-primary" type="submit" data-i18n="subscribe_btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- FEATURE GRID (6) -->
-    <section class="features reveal">
-      <div class="container">
-        <h2 class="section-title">What you get</h2>
-        <div class="grid-3">
-          <div class="card glass">
-            <h3>Brand Playbooks</h3>
-            <p>Positioning, narrative, voice.</p>
-          </div>
-          <div class="card glass">
-            <h3>Launch Engines</h3>
-            <p>Repeatable, compounding launches.</p>
-          </div>
-          <div class="card glass">
-            <h3>Audience Ops</h3>
-            <p>Acquisition, retention, referrals.</p>
-          </div>
-          <div class="card glass">
-            <h3>Monetization</h3>
-            <p>Offers, pricing, funnels.</p>
-          </div>
-          <div class="card glass">
-            <h3>Templates</h3>
-            <p>Docs, scripts, checklists.</p>
-          </div>
-          <div class="card glass">
-            <h3>Case Studies</h3>
-            <p>Real-world breakdowns.</p>
-          </div>
-        </div>
+  <!-- BLOG TEASERS -->
+  <section class="blog reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="blog_title">Latest notes</h2>
+      <div class="grid-3">
+        <article class="card glass"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass"><h3 data-i18n="blog_2_t">Launch System</h3><p data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass"><h3 data-i18n="blog_3_t">Offer Math</h3><p data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ROADMAP -->
-    <section class="roadmap reveal">
-      <div class="container">
-        <h2 class="section-title">Roadmap</h2>
-        <ul class="roadmap-list">
-          <li class="card glass">Q3 • Beta cohort & feedback</li>
-          <li class="card glass">Q4 • Community space & weekly sprints</li>
-          <li class="card glass">Q1 • Advanced modules & expert sessions</li>
-        </ul>
-      </div>
-    </section>
+  <!-- CTA -->
+  <section class="cta reveal" id="contact">
+    <div class="container">
+      <h2 data-i18n="cta_title">Ready to start your journey?</h2>
+      <a href="#" class="cta-btn magnetic" data-i18n="cta_button">Start Now</a>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section class="faq reveal">
-      <div class="container">
-        <h2 class="section-title">FAQ</h2>
-        <div class="grid-3">
-          <details class="card glass">
-            <summary><strong>Who is this for?</strong></summary>
-            <p>Creators, solopreneurs, small teams.</p>
-          </details>
-          <details class="card glass">
-            <summary><strong>Refunds?</strong></summary>
-            <p>14-day, no-questions-asked.</p>
-          </details>
-          <details class="card glass">
-            <summary><strong>Updates?</strong></summary>
-            <p>Continuous; pay once, get all.</p>
-          </details>
-        </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="copyright">© 2025 Weltance. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
       </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="pricing reveal">
-      <div class="container">
-        <h2 class="section-title">Pricing</h2>
-        <div class="grid-3">
-          <div class="card glass price">
-            <h3>Starter</h3>
-            <p>Core modules</p>
-            <p class="price-tag">$49</p>
-            <a class="btn btn-ghost" href="#">Choose</a>
-          </div>
-          <div class="card glass price featured">
-            <h3>Pro</h3>
-            <p>All modules + updates</p>
-            <p class="price-tag">$99</p>
-            <a class="btn btn-primary" href="#">Choose</a>
-          </div>
-          <div class="card glass price">
-            <h3>Empire</h3>
-            <p>Pro + coaching slots</p>
-            <p class="price-tag">$199</p>
-            <a class="btn btn-ghost" href="#">Choose</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="newsletter reveal">
-      <div class="container">
-        <h2 class="section-title">Get one high-signal email/week</h2>
-        <form class="glass form" id="newsletter-form">
-          <input type="email" placeholder="you@brand.com" required />
-          <button class="btn btn-primary" type="submit">Subscribe</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- BLOG TEASERS -->
-    <section class="blog reveal">
-      <div class="container">
-        <h2 class="section-title">Latest notes</h2>
-        <div class="grid-3">
-          <article class="card glass">
-            <h3>Zero→One Brand</h3>
-            <p>Positioning in 30 minutes.</p>
-            <a class="btn btn-ghost" href="#">Read</a>
-          </article>
-          <article class="card glass">
-            <h3>Launch System</h3>
-            <p>Repeatable, with compounding.</p>
-            <a class="btn btn-ghost" href="#">Read</a>
-          </article>
-          <article class="card glass">
-            <h3>Offer Math</h3>
-            <p>Build pricing power, not discounts.</p>
-            <a class="btn btn-ghost" href="#">Read</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta reveal" id="contact">
-      <div class="container">
-        <h2 data-i18n="cta_title">Ready to start your journey?</h2>
-        <a href="#" class="cta-btn magnetic" data-i18n="cta_button"
-          >Start Now</a
-        >
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container footer-content">
-        <p class="copyright">© 2025 Weltance. All rights reserved.</p>
-        <div class="social-icons">
-          <a href="#"
-            ><img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
-              alt="YouTube"
-          /></a>
-          <a href="#"
-            ><img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"
-              alt="X"
-          /></a>
-          <a href="#"
-            ><img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
-              alt="TikTok"
-          /></a>
-          <a href="#"
-            ><img
-              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-              alt="Instagram"
-          /></a>
-        </div>
-      </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
 </html>

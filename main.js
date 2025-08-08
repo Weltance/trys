@@ -4,18 +4,15 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Parallax (mild; desktop only / respect reduced motion)
+// Parallax (mild) - disabled on mobile via CSS hiding .decor
 const px = document.querySelectorAll('[data-parallax]');
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (window.innerWidth > 640 && !reduced) {
-  window.addEventListener('scroll', ()=>{
-    const y = window.scrollY;
-    px.forEach(el=>{
-      const s = parseFloat(el.getAttribute('data-speed'))||0.1;
-      el.style.transform = `translate3d(0, ${y*s}px, 0)`;
-    });
-  }, { passive: true });
-}
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  px.forEach(el=>{
+    const s = parseFloat(el.getAttribute('data-speed'))||0.1;
+    el.style.transform = `translateY(${y*s}px)`;
+  });
+}, { passive: true });
 
 // Magnetic buttons
 document.querySelectorAll('.magnetic').forEach(btn=>{
@@ -77,10 +74,15 @@ document.getElementById('newsletter-form')?.addEventListener('submit', (e)=>{
 // Mobile hamburger toggle
 const navEl = document.querySelector('.nav');
 const navToggle = document.getElementById('nav-toggle');
-navToggle?.addEventListener('click', ()=>{
+navToggle?.addEventListener('click', (ev)=>{
+  ev.stopPropagation();
   const open = navEl.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
+// Close only on anchor click (not on select)
 document.querySelectorAll('.nav-links a').forEach(el=>{
   el.addEventListener('click', ()=> navEl.classList.remove('open'));
 });
+// Avoid closing when tapping inside the panel
+document.querySelector('.nav-links')?.addEventListener('click', e=> e.stopPropagation());
+document.addEventListener('click', ()=> navEl.classList.remove('open'));
