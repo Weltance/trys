@@ -12,6 +12,7 @@
 <body class="page-enter">
   <!-- BOTTOM DOCK NAVBAR -->
   <header class="header">
+    <div class="progressbar"><span id="scroll-progress"></span></div>
     <div class="container nav-container">
       <div class="logo">
         <img src="./assets/logo.png" alt="Weltance Logo" />
@@ -38,16 +39,17 @@
     </div>
   </header>
 
-  <!-- HERO with Topography Canvas -->
+  <!-- BACK TO TOP -->
+  <button id="to-top" aria-label="Back to top">↑</button>
+
+  <!-- HERO with Perlin Topography Canvas -->
   <section class="hero pattern-bg" id="home">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
-    <div class="decor decor-1" data-parallax data-speed="0.08"></div>
-    <div class="decor decor-2" data-parallax data-speed="-0.05"></div>
     <div class="grain"></div>
 
     <div class="container hero-inner reveal">
-      <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
+      <h1 class="hero-title glow" data-i18n="hero_title">Where Ideas Thrive</h1>
       <p class="hero-subtitle" data-i18n="hero_subtitle">Build your digital empire with clarity and confidence.</p>
 
       <div class="typed-line">
@@ -61,10 +63,26 @@
       </div>
 
       <div class="hero-ctas">
-        <a href="#product" class="btn btn-primary magnetic" data-i18n="hero_cta_primary">Explore the Pack</a>
-        <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_secondary">Why Weltance</a>
+        <a href="#product" class="btn btn-primary btn-liquid magnetic" data-i18n="hero_cta_primary">Explore the Pack</a>
+        <a href="#about" class="btn btn-ghost magnetic" data-i18n="hero_cta_secondary">Why Weltance</a>
       </div>
     </div>
+    <div class="divider wave bottom"></div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof reveal">
+    <div class="container">
+      <p class="trusted" data-i18n="trusted_by">Trusted by 500+ creators</p>
+      <div class="logos">
+        <span>Product Hunt</span>
+        <span>Indie Hackers</span>
+        <span>Hacker News</span>
+        <span>Designer News</span>
+        <span>BetaList</span>
+      </div>
+    </div>
+    <div class="divider wave top"></div>
   </section>
 
   <!-- HIGHLIGHTS -->
@@ -72,50 +90,52 @@
     <div class="container">
       <h2 class="section-title" data-i18n="highlights_title">Built for momentum</h2>
       <div class="grid-3 micro-animate">
-        <div class="card glass anim-item">
+        <div class="card glass anim-item hvr">
           <div class="icon">⚡</div>
           <h3 data-i18n="highlight_1_t">Start fast</h3>
           <p data-i18n="highlight_1_d">Zero-to-one guidance you can apply today.</p>
         </div>
-        <div class="card glass anim-item">
+        <div class="card glass anim-item hvr">
           <div class="icon">🎯</div>
           <h3 data-i18n="highlight_2_t">Clarity first</h3>
           <p data-i18n="highlight_2_d">No noise. Only what moves the needle.</p>
         </div>
-        <div class="card glass anim-item">
+        <div class="card glass anim-item hvr">
           <div class="icon">🌍</div>
           <h3 data-i18n="highlight_3_t">Global scale</h3>
           <p data-i18n="highlight_3_d">Structure that grows with your brand.</p>
         </div>
       </div>
     </div>
+    <div class="divider wave bottom"></div>
   </section>
 
   <!-- STATS -->
   <section class="stats reveal">
     <div class="container grid-3 micro-animate">
-      <div class="card glass stat anim-item">
+      <div class="card glass stat anim-item hvr">
         <div class="icon">🚀</div>
         <div class="count" data-target="500">0</div>
         <p data-i18n="stats_creators">Creators started</p>
       </div>
-      <div class="card glass stat anim-item">
+      <div class="card glass stat anim-item hvr">
         <div class="icon">📦</div>
         <div class="count" data-target="120">0</div>
         <p data-i18n="stats_modules">Modules inside</p>
       </div>
-      <div class="card glass stat anim-item">
+      <div class="card glass stat anim-item hvr">
         <div class="icon">⭐</div>
         <div class="count" data-target="98">0</div>
         <p data-i18n="stats_satisfaction">Satisfaction (%)</p>
       </div>
     </div>
+    <div class="divider wave top"></div>
   </section>
 
   <!-- PRODUCT -->
   <section class="product-section pattern-soft reveal" id="product">
     <div class="container">
-      <div class="product-card glass micro-animate">
+      <div class="product-card glass micro-animate hvr">
         <div class="product-mock anim-tilt">
           <div class="mock-frame">
             <div class="mock-gradient"></div>
@@ -126,9 +146,10 @@
         <p class="product-description" data-i18n="product_desc">
           From Nobody to Brand. A powerful starter kit for creators who want to build authority from zero.
         </p>
-        <a href="#" class="product-btn" data-i18n="view_product">View on Fourthwall</a>
+        <a href="#" class="product-btn btn-liquid" data-i18n="view_product">View on Fourthwall</a>
       </div>
     </div>
+    <div class="divider wave bottom"></div>
   </section>
 
   <!-- TESTIMONIALS (carousel) -->
@@ -159,6 +180,7 @@
         <button class="carousel-btn next" aria-label="Next">›</button>
       </div>
     </div>
+    <div class="divider wave top"></div>
   </section>
 
   <!-- FEATURES -->
@@ -166,14 +188,15 @@
     <div class="container">
       <h2 class="section-title" data-i18n="features_title">What you get</h2>
       <div class="grid-3 micro-animate">
-        <div class="card glass anim-item"><h3 data-i18n="feature_1_t">Brand Playbooks</h3><p data-i18n="feature_1_d">Positioning, narrative, voice.</p></div>
-        <div class="card glass anim-item"><h3 data-i18n="feature_2_t">Launch Engines</h3><p data-i18n="feature_2_d">Repeatable, compounding launches.</p></div>
-        <div class="card glass anim-item"><h3 data-i18n="feature_3_t">Audience Ops</h3><p data-i18n="feature_3_d">Acquisition, retention, referrals.</p></div>
-        <div class="card glass anim-item"><h3 data-i18n="feature_4_t">Monetization</h3><p data-i18n="feature_4_d">Offers, pricing, funnels.</p></div>
-        <div class="card glass anim-item"><h3 data-i18n="feature_5_t">Templates</h3><p data-i18n="feature_5_d">Docs, scripts, checklists.</p></div>
-        <div class="card glass anim-item"><h3 data-i18n="feature_6_t">Case Studies</h3><p data-i18n="feature_6_d">Real-world breakdowns.</p></div>
+        <div class="card glass anim-item hvr"><h3 data-i18n="feature_1_t">Brand Playbooks</h3><p data-i18n="feature_1_d">Positioning, narrative, voice.</p></div>
+        <div class="card glass anim-item hvr"><h3 data-i18n="feature_2_t">Launch Engines</h3><p data-i18n="feature_2_d">Repeatable, compounding launches.</p></div>
+        <div class="card glass anim-item hvr"><h3 data-i18n="feature_3_t">Audience Ops</h3><p data-i18n="feature_3_d">Acquisition, retention, referrals.</p></div>
+        <div class="card glass anim-item hvr"><h3 data-i18n="feature_4_t">Monetization</h3><p data-i18n="feature_4_d">Offers, pricing, funnels.</p></div>
+        <div class="card glass anim-item hvr"><h3 data-i18n="feature_5_t">Templates</h3><p data-i18n="feature_5_d">Docs, scripts, checklists.</p></div>
+        <div class="card glass anim-item hvr"><h3 data-i18n="feature_6_t">Case Studies</h3><p data-i18n="feature_6_d">Real-world breakdowns.</p></div>
       </div>
     </div>
+    <div class="divider wave bottom"></div>
   </section>
 
   <!-- ROADMAP -->
@@ -181,11 +204,12 @@
     <div class="container">
       <h2 class="section-title" data-i18n="roadmap_title">Roadmap</h2>
       <ul class="roadmap-list micro-animate">
-        <li class="card glass anim-item" data-i18n="roadmap_1">Q3 • Beta cohort & feedback</li>
-        <li class="card glass anim-item" data-i18n="roadmap_2">Q4 • Community space & weekly sprints</li>
-        <li class="card glass anim-item" data-i18n="roadmap_3">Q1 • Advanced modules & expert sessions</li>
+        <li class="card glass anim-item hvr" data-i18n="roadmap_1">Q3 • Beta cohort & feedback</li>
+        <li class="card glass anim-item hvr" data-i18n="roadmap_2">Q4 • Community space & weekly sprints</li>
+        <li class="card glass anim-item hvr" data-i18n="roadmap_3">Q1 • Advanced modules & expert sessions</li>
       </ul>
     </div>
+    <div class="divider wave top"></div>
   </section>
 
   <!-- FAQ -->
@@ -193,11 +217,12 @@
     <div class="container">
       <h2 class="section-title" data-i18n="faq_title">FAQ</h2>
       <div class="grid-3 micro-animate">
-        <details class="card glass anim-item"><summary data-i18n="faq_1_q"><strong>Who is this for?</strong></summary><p data-i18n="faq_1_a">Creators, solopreneurs, small teams.</p></details>
-        <details class="card glass anim-item"><summary data-i18n="faq_2_q"><strong>Refunds?</strong></summary><p data-i18n="faq_2_a">14-day, no-questions-asked.</p></details>
-        <details class="card glass anim-item"><summary data-i18n="faq_3_q"><strong>Updates?</strong></summary><p data-i18n="faq_3_a">Continuous; pay once, get all.</p></details>
+        <details class="card glass anim-item hvr"><summary data-i18n="faq_1_q"><strong>Who is this for?</strong></summary><p data-i18n="faq_1_a">Creators, solopreneurs, small teams.</p></details>
+        <details class="card glass anim-item hvr"><summary data-i18n="faq_2_q"><strong>Refunds?</strong></summary><p data-i18n="faq_2_a">14-day, no-questions-asked.</p></details>
+        <details class="card glass anim-item hvr"><summary data-i18n="faq_3_q"><strong>Updates?</strong></summary><p data-i18n="faq_3_a">Continuous; pay once, get all.</p></details>
       </div>
     </div>
+    <div class="divider wave bottom"></div>
   </section>
 
   <!-- PRICING -->
@@ -205,26 +230,27 @@
     <div class="container">
       <h2 class="section-title" data-i18n="pricing_title">Pricing</h2>
       <div class="grid-3 micro-animate">
-        <div class="card glass price anim-item">
+        <div class="card glass price anim-item hvr">
           <h3 data-i18n="plan_starter_t">Starter</h3>
           <p data-i18n="plan_starter_d">Core modules</p>
           <p class="price-tag" data-i18n="price_starter">$49</p>
-          <a class="btn btn-ghost" href="#" data-i18n="choose_btn">Choose</a>
+          <a class="btn btn-ghost btn-liquid" href="#" data-i18n="choose_btn">Choose</a>
         </div>
-        <div class="card glass price featured anim-item">
+        <div class="card glass price featured anim-item hvr">
           <h3 data-i18n="plan_pro_t">Pro</h3>
           <p data-i18n="plan_pro_d">All modules + updates</p>
           <p class="price-tag" data-i18n="price_pro">$99</p>
-          <a class="btn btn-primary" href="#" data-i18n="choose_btn">Choose</a>
+          <a class="btn btn-primary btn-liquid" href="#" data-i18n="choose_btn">Choose</a>
         </div>
-        <div class="card glass price anim-item">
+        <div class="card glass price anim-item hvr">
           <h3 data-i18n="plan_empire_t">Empire</h3>
           <p data-i18n="plan_empire_d">Pro + coaching slots</p>
           <p class="price-tag" data-i18n="price_empire">$199</p>
-          <a class="btn btn-ghost" href="#" data-i18n="choose_btn">Choose</a>
+          <a class="btn btn-ghost btn-liquid" href="#" data-i18n="choose_btn">Choose</a>
         </div>
       </div>
     </div>
+    <div class="divider wave top"></div>
   </section>
 
   <!-- NEWSLETTER -->
@@ -233,7 +259,7 @@
       <h2 class="section-title" data-i18n="newsletter_title">Get one high-signal email/week</h2>
       <form class="glass form" id="newsletter-form">
         <input type="email" placeholder="you@brand.com" required data-i18n-ph="email_placeholder">
-        <button class="btn btn-primary" type="submit" data-i18n="subscribe_btn">Subscribe</button>
+        <button class="btn btn-primary btn-liquid" type="submit" data-i18n="subscribe_btn">Subscribe</button>
       </form>
     </div>
   </section>
@@ -243,9 +269,9 @@
     <div class="container">
       <h2 class="section-title" data-i18n="blog_title">Latest notes</h2>
       <div class="grid-3 micro-animate">
-        <article class="card glass anim-item"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p class="teaser" data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost read-btn" href="#" data-i18n="read_btn">Read</a></article>
-        <article class="card glass anim-item"><h3 data-i18n="blog_2_t">Launch System</h3><p class="teaser" data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost read-btn" href="#" data-i18n="read_btn">Read</a></article>
-        <article class="card glass anim-item"><h3 data-i18n="blog_3_t">Offer Math</h3><p class="teaser" data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost read-btn" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item hvr"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p class="teaser" data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost read-btn btn-liquid" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item hvr"><h3 data-i18n="blog_2_t">Launch System</h3><p class="teaser" data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost read-btn btn-liquid" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item hvr"><h3 data-i18n="blog_3_t">Offer Math</h3><p class="teaser" data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost read-btn btn-liquid" href="#" data-i18n="read_btn">Read</a></article>
       </div>
     </div>
   </section>
@@ -254,7 +280,7 @@
   <section class="cta reveal" id="contact">
     <div class="container">
       <h2 data-i18n="cta_title">Ready to start your journey?</h2>
-      <a href="#" class="cta-btn magnetic" data-i18n="cta_button">Start Now</a>
+      <a href="#" class="cta-btn magnetic btn-liquid" data-i18n="cta_button">Start Now</a>
     </div>
   </section>
 

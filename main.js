@@ -1,23 +1,16 @@
-// --- Common interactions (reveal, parallax, etc.) ---
+// Reveal on scroll
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+// Micro-animations for items
 const ioItems = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); ioItems.unobserve(e.target); } });
 }, { threshold: 0.25 });
 document.querySelectorAll('.micro-animate .anim-item').forEach(el=> ioItems.observe(el));
 
-const px = document.querySelectorAll('[data-parallax]');
-window.addEventListener('scroll', ()=>{
-  const y = window.scrollY;
-  px.forEach(el=>{
-    const s = parseFloat(el.getAttribute('data-speed'))||0.1;
-    el.style.transform = `translateY(${y*s}px)`;
-  });
-}, { passive: true });
-
+// Magnetic buttons
 document.querySelectorAll('.magnetic').forEach(btn=>{
   const k = 16;
   btn.addEventListener('mousemove', e=>{
@@ -28,6 +21,7 @@ document.querySelectorAll('.magnetic').forEach(btn=>{
   btn.addEventListener('mouseleave', ()=> btn.style.transform='');
 });
 
+// Theme toggle
 const root = document.documentElement;
 const themeBtn = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('theme');
@@ -39,6 +33,7 @@ if(themeBtn){ setEmoji(); themeBtn.addEventListener('click', ()=>{
   setEmoji();
 });}
 
+// Scrollspy highlight
 const ids=['home','product','about','contact'];
 const links = new Map(ids.map(id=>[id, document.querySelector(`a[href="#${id}"]`)]));
 const spy=new IntersectionObserver((es)=>{
@@ -52,6 +47,7 @@ const spy=new IntersectionObserver((es)=>{
 },{rootMargin:'-40% 0px -50% 0px', threshold:0.01});
 ids.forEach(id=>{ const el=document.getElementById(id); if(el) spy.observe(el); });
 
+// Counters
 const counters=document.querySelectorAll('.count');
 const io2=new IntersectionObserver((es)=>{
   es.forEach(en=>{
@@ -65,11 +61,13 @@ const io2=new IntersectionObserver((es)=>{
 },{threshold:0.4});
 counters.forEach(c=>io2.observe(c));
 
+// Newsletter demo
 document.getElementById('newsletter-form')?.addEventListener('submit', (e)=>{
   e.preventDefault();
   alert('Subscribed!');
 });
 
+// Mobile hamburger
 const navEl = document.querySelector('.nav');
 const navToggle = document.getElementById('nav-toggle');
 navToggle?.addEventListener('click', (ev)=>{
@@ -77,13 +75,11 @@ navToggle?.addEventListener('click', (ev)=>{
   const open = navEl.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
-document.querySelectorAll('.nav-links a').forEach(el=>{
-  el.addEventListener('click', ()=> navEl.classList.remove('open'));
-});
+document.querySelectorAll('.nav-links a').forEach(el=> el.addEventListener('click', ()=> navEl.classList.remove('open')));
 document.querySelector('.nav-links')?.addEventListener('click', e=> e.stopPropagation());
 document.addEventListener('click', ()=> navEl.classList.remove('open'));
 
-// Typed text (language aware)
+// Typed text
 window.startTyped = function(lang){
   const el = document.getElementById('typed');
   if(!el) return;
@@ -133,12 +129,29 @@ window.addEventListener('DOMContentLoaded', ()=>{
   loop();
 })();
 
-// --- Topography Canvas Animation ---
+// Back to top + scroll progress
+(function(){
+  const btn = document.getElementById('to-top');
+  const bar = document.getElementById('scroll-progress');
+  function onScroll(){
+    const y = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = Math.max(0, Math.min(1, y / (h || 1)));
+    if(y > 400){ btn.classList.add('show'); } else { btn.classList.remove('show'); }
+    if(bar) bar.style.width = (p*100).toFixed(1) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn?.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
+})();
+
+// Perlin-noise Topography
 (function(){
   const canvas = document.getElementById('hero-canvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let w=0, h=0, dpr=1, t=0;
+
   function fit(){
     const rect = canvas.parentElement.getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio||1, 2);
@@ -150,36 +163,46 @@ window.addEventListener('DOMContentLoaded', ()=>{
     canvas.style.height = h + 'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
   }
-  const ro = new ResizeObserver(fit); ro.observe(canvas.parentElement);
-  fit();
+  const ro = new ResizeObserver(fit); ro.observe(canvas.parentElement); fit();
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(prefersReduced) return;
 
-  function noise2D(x,y){
-    // simple value noise via sine; visually smooth and very cheap
-    return Math.sin(x*0.0018 + y*0.0012) + Math.sin(x*0.0009 - y*0.0014);
+  // tiny perlin
+  const perm = new Uint8Array(512);
+  for(let i=0;i<256;i++) perm[i]=i;
+  for(let i=255;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=perm[i]; perm[i]=perm[j]; perm[j]=t; }
+  for(let i=0;i<256;i++) perm[i+256]=perm[i];
+  function fade(t){ return t*t*t*(t*(t*6-15)+10); }
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function grad(hash, x,y){ const h=hash&3; const u=h<2?x:y; const v=h<2?y:x; return ((h&1)?-u:u) + ((h&2)?-2*v:2*v)/2; }
+  function perlin(x,y){
+    const X=Math.floor(x)&255, Y=Math.floor(y)&255;
+    x-=Math.floor(x); y-=Math.floor(y);
+    const u=fade(x), v=fade(y);
+    const aa=perm[perm[X]+Y], ab=perm[perm[X]+Y+1], ba=perm[perm[X+1]+Y], bb=perm[perm[X+1]+Y+1];
+    return lerp(lerp(grad(aa,x,y), grad(ba,x-1,y), u), lerp(grad(ab,x,y-1), grad(bb,x-1,y-1), u), v);
   }
 
   function draw(){
     ctx.clearRect(0,0,w,h);
     const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand').trim() || '#2c4f87';
     ctx.lineWidth = 1;
-    ctx.strokeStyle = brand + '55';
-    const step = 18; // contour step (px)
-    const amp = 28;  // wave amplitude
-    for(let y=0; y<h+step; y+=step){
+    const density = 22; // vertical spacing of contour bands
+    const scale = 0.012; // noise scale
+    for(let y=0; y<h + density; y += density){
       ctx.beginPath();
       for(let x=0; x<=w; x+=8){
-        const n = noise2D(x + t*0.6, y - t*0.35);
-        const oy = Math.sin((x*0.012) + t*0.02) * 3 + n * 4;
-        const yy = y + Math.sin((y*0.02)+t*0.02)*1.2 + oy;
-        if(x===0) ctx.moveTo(x, yy);
-        else ctx.lineTo(x, yy);
+        const n = perlin((x+t*0.5)*scale, (y-t*0.3)*scale);
+        const m = perlin((x-500-t*0.2)*scale*0.6, (y+200+t*0.4)*scale*0.6);
+        const offset = (n*18 + m*10);
+        const yy = y + offset;
+        if(x===0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
       }
+      ctx.strokeStyle = brand + '55';
       ctx.stroke();
     }
-    t += 1.2;
+    t += 0.8;
     requestAnimationFrame(draw);
   }
   draw();
