@@ -5,6 +5,7 @@ const translations = {
     hero_title:"Where Ideas Thrive", hero_subtitle:"Build your digital empire with clarity and confidence.",
     chip_actionable:"Actionable", chip_nofluff:"No Fluff", chip_global:"Global-Ready",
     hero_cta_primary:"Explore the Pack", hero_cta_secondary:"Why Weltance",
+    typed_variants:["Build. Scale. Dominate.","No fluff. All execution.","From nobody to brand."],
     highlights_title:"Built for momentum",
     highlight_1_t:"Start fast", highlight_1_d:"Zero-to-one guidance you can apply today.",
     highlight_2_t:"Clarity first", highlight_2_d:"No noise. Only what moves the needle.",
@@ -12,6 +13,7 @@ const translations = {
     stats_creators:"Creators started", stats_modules:"Modules inside", stats_satisfaction:"Satisfaction (%)",
     product_title:"Weltance Builder Pack", product_desc:"From Nobody to Brand. A powerful starter kit for creators who want to build authority from zero.",
     view_product:"View on Fourthwall",
+    testimonials_title:"What early users say",
     features_title:"What you get",
     feature_1_t:"Brand Playbooks", feature_1_d:"Positioning, narrative, voice.",
     feature_2_t:"Launch Engines",  feature_2_d:"Repeatable, compounding launches.",
@@ -32,6 +34,7 @@ const translations = {
     hero_title:"Fikirlerin Büyüdüğü Yer", hero_subtitle:"Dijital imparatorluğunu netlik ve güvenle inşa et.",
     chip_actionable:"Uygulanabilir", chip_nofluff:"Gereksiz Yok", chip_global:"Global Hazır",
     hero_cta_primary:"Paketi Keşfet", hero_cta_secondary:"Neden Weltance",
+    typed_variants:["İnşa et. Büyüt. Hakim ol.","Laf değil, icraat.","Hiçlikten markaya."],
     highlights_title:"Momentum için üretildi",
     highlight_1_t:"Hızlı başla", highlight_1_d:"Bugün uygulayabileceğin sıfırdan-bire rehberlik.",
     highlight_2_t:"Önce netlik", highlight_2_d:"Gürültü yok. Sadece işe yarayan adımlar.",
@@ -39,6 +42,7 @@ const translations = {
     stats_creators:"Başlayan üretici", stats_modules:"Modül sayısı", stats_satisfaction:"Memnuniyet (%)",
     product_title:"Weltance Builder Pack", product_desc:"Hiçlikten markaya. Sıfırdan otorite kurmak isteyenler için güçlü bir başlangıç paketi.",
     view_product:"Fourthwall'da Görüntüle",
+    testimonials_title:"İlk kullanıcı yorumları",
     features_title:"Neler var?",
     feature_1_t:"Marka Oyun Kitapları", feature_1_d:"Konumlama, anlatı, dil.",
     feature_2_t:"Lansman Motorları",    feature_2_d:"Tekrarlanabilir, bileşik lansmanlar.",
@@ -59,6 +63,7 @@ const translations = {
     hero_title:"Là où les idées prospèrent", hero_subtitle:"Construisez votre empire digital avec clarté et confiance.",
     chip_actionable:"Actionnable", chip_nofluff:"Sans bla-bla", chip_global:"Prêt pour le monde",
     hero_cta_primary:"Découvrir le pack", hero_cta_secondary:"Pourquoi Weltance",
+    typed_variants:["Construire. Déployer. Dominer.","Sans bla-bla, que de l'action.","De personne à marque."],
     highlights_title:"Conçu pour l'élan",
     highlight_1_t:"Démarrer vite", highlight_1_d:"Des conseils applicables dès aujourd'hui.",
     highlight_2_t:"Clarté d'abord", highlight_2_d:"Pas de bruit. Que l'essentiel.",
@@ -66,6 +71,7 @@ const translations = {
     stats_creators:"Créateurs lancés", stats_modules:"Modules inclus", stats_satisfaction:"Satisfaction (%)",
     product_title:"Weltance Builder Pack", product_desc:"De personne à marque. Un kit puissant pour bâtir votre autorité depuis zéro.",
     view_product:"Voir sur Fourthwall",
+    testimonials_title:"Avis des premiers utilisateurs",
     features_title:"Ce que vous obtenez",
     feature_1_t:"Playbooks de marque", feature_1_d:"Positionnement, récit, ton.",
     feature_2_t:"Moteurs de lancement", feature_2_d:"Lancements répétables et cumulatifs.",
@@ -86,6 +92,7 @@ const translations = {
     hero_title:"Wo Ideen gedeihen", hero_subtitle:"Baue dein digitales Imperium mit Klarheit und Vertrauen.",
     chip_actionable:"Umsetzbar", chip_nofluff:"Kein Blabla", chip_global:"Global bereit",
     hero_cta_primary:"Pack entdecken", hero_cta_secondary:"Warum Weltance",
+    typed_variants:["Bauen. Skalieren. Dominieren.","Kein Blabla, nur Taten.","Von Niemand zur Marke."],
     highlights_title:"Für Momentum gebaut",
     highlight_1_t:"Schnell starten", highlight_1_d:"Anleitung, die du heute anwenden kannst.",
     highlight_2_t:"Klarheit zuerst", highlight_2_d:"Kein Rauschen. Nur Wirkung.",
@@ -93,6 +100,7 @@ const translations = {
     stats_creators:"Gestartete Creator", stats_modules:"Module enthalten", stats_satisfaction:"Zufriedenheit (%)",
     product_title:"Weltance Builder Pack", product_desc:"Von Niemand zur Marke. Ein starkes Starter‑Kit für Autorität ab Null.",
     view_product:"Auf Fourthwall ansehen",
+    testimonials_title:"Frühe Stimmen",
     features_title:"Was du bekommst",
     feature_1_t:"Brand‑Playbooks", feature_1_d:"Positionierung, Story, Ton.",
     feature_2_t:"Launch‑Engines", feature_2_d:"Wiederholbare, kumulative Launches.",
@@ -113,6 +121,7 @@ const translations = {
     hero_title:"Где идеи расцветают", hero_subtitle:"Стройте цифровую империю с ясностью и уверенностью.",
     chip_actionable:"Практично", chip_nofluff:"Без воды", chip_global:"Готово к миру",
     hero_cta_primary:"Изучить набор", hero_cta_secondary:"Почему Weltance",
+    typed_variants:["Строй. Масштабируй. Доминируй.","Без воды — только дела.","От никого к бренду."],
     highlights_title:"Создано для ускорения",
     highlight_1_t:"Старт быстро", highlight_1_d:"Руководства, которые можно применить сегодня.",
     highlight_2_t:"Сначала ясность", highlight_2_d:"Без шума. Только эффект.",
@@ -120,6 +129,7 @@ const translations = {
     stats_creators:"Начали создатели", stats_modules:"Модулей внутри", stats_satisfaction:"Удовлетворённость (%)",
     product_title:"Weltance Builder Pack", product_desc:"От никого к бренду. Мощный стартовый набор для создания авторитета с нуля.",
     view_product:"Смотреть на Fourthwall",
+    testimonials_title:"Отзывы первых пользователей",
     features_title:"Что вы получаете",
     feature_1_t:"Плейбуки бренда", feature_1_d:"Позиционирование, нарратив, голос.",
     feature_2_t:"Двигатели запусков", feature_2_d:"Повторяемые, нарастающие запуски.",
@@ -140,6 +150,7 @@ const translations = {
     hero_title:"حيث تزدهر الأفكار", hero_subtitle:"ابنِ إمبراطوريتك الرقمية بوضوح وثقة.",
     chip_actionable:"قابل للتنفيذ", chip_nofluff:"بلا حشو", chip_global:"جاهز عالميًا",
     hero_cta_primary:"اكتشف الحزمة", hero_cta_secondary:"لماذا وِلتانس",
+    typed_variants:["ابنِ. نمِّ. سيطر.","لا حشو—فعل فقط.","من لا شيء إلى علامة."],
     highlights_title:"مصمم للزخم",
     highlight_1_t:"ابدأ بسرعة", highlight_1_d:"إرشادات قابلة للتطبيق اليوم.", 
     highlight_2_t:"الوضوح أولاً", highlight_2_d:"لا ضوضاء. ما يصنع الأثر فقط.",
@@ -147,6 +158,7 @@ const translations = {
     stats_creators:"مبدعون بدأوا", stats_modules:"عدد الوحدات", stats_satisfaction:"الرضا (%)",
     product_title:"Weltance Builder Pack", product_desc:"من لا شيء إلى علامة. حزمة قوية لبناء السلطة من الصفر.",
     view_product:"عرض على Fourthwall",
+    testimonials_title:"آراء المستخدمين الأوائل",
     features_title:"ماذا ستحصل",
     feature_1_t:"كتيبات العلامة", feature_1_d:"التموضع والقصة والصوت.",
     feature_2_t:"محركات الإطلاق", feature_2_d:"إطلاقات متكررة ومتراكمة.",
@@ -189,8 +201,9 @@ function applyTranslations(lang){
       const lang = e.target.value;
       localStorage.setItem('lang', lang);
       applyTranslations(lang);
+      // restart typed line with new language variants
+      if (window.startTyped) window.startTyped(lang);
     });
-    // prevent nav from closing when interacting with select
     ['click','touchstart'].forEach(evt=> select.addEventListener(evt, (e)=> e.stopPropagation(), {passive:true}));
   }
 })();

@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weltance – Where Ideas Thrive</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="./assets/logo.png" />
+  <link rel="stylesheet" href="style.css" />
   <script defer src="lang.js"></script>
   <script defer src="main.js"></script>
 </head>
-<body>
+<body class="page-enter">
   <!-- BOTTOM DOCK NAVBAR -->
   <header class="header">
     <div class="container nav-container">
@@ -38,8 +38,16 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO with optional background video + typed text -->
   <section class="hero pattern-bg" id="home">
+    <div class="hero-video-wrap">
+      <!-- Drop your optimized loop video as assets/hero.mp4 or hero.webm; this auto-plays if present -->
+      <video class="hero-video" autoplay muted loop playsinline poster="" onerror="this.style.display='none'">
+        <source src="./assets/hero.webm" type="video/webm" />
+        <source src="./assets/hero.mp4" type="video/mp4" />
+      </video>
+    </div>
+
     <div class="decor decor-1" data-parallax data-speed="0.12"></div>
     <div class="decor decor-2" data-parallax data-speed="-0.08"></div>
     <div class="grain"></div>
@@ -47,6 +55,10 @@
     <div class="container hero-inner reveal">
       <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
       <p class="hero-subtitle" data-i18n="hero_subtitle">Build your digital empire with clarity and confidence.</p>
+
+      <div class="typed-line">
+        <span id="typed"></span><span class="cursor">▍</span>
+      </div>
 
       <div class="hero-chips">
         <span class="chip" data-i18n="chip_actionable">Actionable</span>
@@ -65,18 +77,18 @@
   <section class="highlights reveal" id="about">
     <div class="container">
       <h2 class="section-title" data-i18n="highlights_title">Built for momentum</h2>
-      <div class="grid-3">
-        <div class="card glass">
+      <div class="grid-3 micro-animate">
+        <div class="card glass anim-item">
           <div class="icon">⚡</div>
           <h3 data-i18n="highlight_1_t">Start fast</h3>
           <p data-i18n="highlight_1_d">Zero-to-one guidance you can apply today.</p>
         </div>
-        <div class="card glass">
+        <div class="card glass anim-item">
           <div class="icon">🎯</div>
           <h3 data-i18n="highlight_2_t">Clarity first</h3>
           <p data-i18n="highlight_2_d">No noise. Only what moves the needle.</p>
         </div>
-        <div class="card glass">
+        <div class="card glass anim-item">
           <div class="icon">🌍</div>
           <h3 data-i18n="highlight_3_t">Global scale</h3>
           <p data-i18n="highlight_3_d">Structure that grows with your brand.</p>
@@ -87,18 +99,18 @@
 
   <!-- STATS -->
   <section class="stats reveal">
-    <div class="container grid-3">
-      <div class="card glass stat">
+    <div class="container grid-3 micro-animate">
+      <div class="card glass stat anim-item">
         <div class="icon">🚀</div>
         <div class="count" data-target="500">0</div>
         <p data-i18n="stats_creators">Creators started</p>
       </div>
-      <div class="card glass stat">
+      <div class="card glass stat anim-item">
         <div class="icon">📦</div>
         <div class="count" data-target="120">0</div>
         <p data-i18n="stats_modules">Modules inside</p>
       </div>
-      <div class="card glass stat">
+      <div class="card glass stat anim-item">
         <div class="icon">⭐</div>
         <div class="count" data-target="98">0</div>
         <p data-i18n="stats_satisfaction">Satisfaction (%)</p>
@@ -109,8 +121,8 @@
   <!-- PRODUCT -->
   <section class="product-section pattern-soft reveal" id="product">
     <div class="container">
-      <div class="product-card glass">
-        <div class="product-mock">
+      <div class="product-card glass micro-animate">
+        <div class="product-mock anim-tilt">
           <div class="mock-frame">
             <div class="mock-gradient"></div>
             <div class="mock-label" data-i18n="product_title">Weltance Builder Pack</div>
@@ -125,17 +137,45 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS (carousel) -->
+  <section class="testimonials reveal">
+    <div class="container">
+      <h2 class="section-title" data-i18n="testimonials_title">What early users say</h2>
+      <div class="carousel glass" id="testimonial-carousel" aria-roledescription="carousel">
+        <button class="carousel-btn prev" aria-label="Previous">‹</button>
+        <div class="carousel-track">
+          <figure class="slide">
+            <img class="avatar" src="https://picsum.photos/seed/a/80/80" alt="user" />
+            <blockquote>“Clean. Direct. Finally a pack that makes me ship.”</blockquote>
+            <figcaption>— Creator, Beta Cohort</figcaption>
+          </figure>
+          <figure class="slide">
+            <img class="avatar" src="https://picsum.photos/seed/b/80/80" alt="user" />
+            <blockquote>“From zero to traction in weeks. Worth it.”</blockquote>
+            <figcaption>— Solo Founder</figcaption>
+          </figure>
+          <figure class="slide">
+            <img class="avatar" src="https://picsum.photos/seed/c/80/80" alt="user" />
+            <blockquote>“The structure is gold. I stopped procrastinating.”</blockquote>
+            <figcaption>— Content Designer</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-btn next" aria-label="Next">›</button>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section class="features reveal">
     <div class="container">
       <h2 class="section-title" data-i18n="features_title">What you get</h2>
-      <div class="grid-3">
-        <div class="card glass"><h3 data-i18n="feature_1_t">Brand Playbooks</h3><p data-i18n="feature_1_d">Positioning, narrative, voice.</p></div>
-        <div class="card glass"><h3 data-i18n="feature_2_t">Launch Engines</h3><p data-i18n="feature_2_d">Repeatable, compounding launches.</p></div>
-        <div class="card glass"><h3 data-i18n="feature_3_t">Audience Ops</h3><p data-i18n="feature_3_d">Acquisition, retention, referrals.</p></div>
-        <div class="card glass"><h3 data-i18n="feature_4_t">Monetization</h3><p data-i18n="feature_4_d">Offers, pricing, funnels.</p></div>
-        <div class="card glass"><h3 data-i18n="feature_5_t">Templates</h3><p data-i18n="feature_5_d">Docs, scripts, checklists.</p></div>
-        <div class="card glass"><h3 data-i18n="feature_6_t">Case Studies</h3><p data-i18n="feature_6_d">Real-world breakdowns.</p></div>
+      <div class="grid-3 micro-animate">
+        <div class="card glass anim-item"><h3 data-i18n="feature_1_t">Brand Playbooks</h3><p data-i18n="feature_1_d">Positioning, narrative, voice.</p></div>
+        <div class="card glass anim-item"><h3 data-i18n="feature_2_t">Launch Engines</h3><p data-i18n="feature_2_d">Repeatable, compounding launches.</p></div>
+        <div class="card glass anim-item"><h3 data-i18n="feature_3_t">Audience Ops</h3><p data-i18n="feature_3_d">Acquisition, retention, referrals.</p></div>
+        <div class="card glass anim-item"><h3 data-i18n="feature_4_t">Monetization</h3><p data-i18n="feature_4_d">Offers, pricing, funnels.</p></div>
+        <div class="card glass anim-item"><h3 data-i18n="feature_5_t">Templates</h3><p data-i18n="feature_5_d">Docs, scripts, checklists.</p></div>
+        <div class="card glass anim-item"><h3 data-i18n="feature_6_t">Case Studies</h3><p data-i18n="feature_6_d">Real-world breakdowns.</p></div>
       </div>
     </div>
   </section>
@@ -144,10 +184,10 @@
   <section class="roadmap reveal">
     <div class="container">
       <h2 class="section-title" data-i18n="roadmap_title">Roadmap</h2>
-      <ul class="roadmap-list">
-        <li class="card glass" data-i18n="roadmap_1">Q3 • Beta cohort & feedback</li>
-        <li class="card glass" data-i18n="roadmap_2">Q4 • Community space & weekly sprints</li>
-        <li class="card glass" data-i18n="roadmap_3">Q1 • Advanced modules & expert sessions</li>
+      <ul class="roadmap-list micro-animate">
+        <li class="card glass anim-item" data-i18n="roadmap_1">Q3 • Beta cohort & feedback</li>
+        <li class="card glass anim-item" data-i18n="roadmap_2">Q4 • Community space & weekly sprints</li>
+        <li class="card glass anim-item" data-i18n="roadmap_3">Q1 • Advanced modules & expert sessions</li>
       </ul>
     </div>
   </section>
@@ -156,10 +196,10 @@
   <section class="faq reveal">
     <div class="container">
       <h2 class="section-title" data-i18n="faq_title">FAQ</h2>
-      <div class="grid-3">
-        <details class="card glass"><summary data-i18n="faq_1_q"><strong>Who is this for?</strong></summary><p data-i18n="faq_1_a">Creators, solopreneurs, small teams.</p></details>
-        <details class="card glass"><summary data-i18n="faq_2_q"><strong>Refunds?</strong></summary><p data-i18n="faq_2_a">14-day, no-questions-asked.</p></details>
-        <details class="card glass"><summary data-i18n="faq_3_q"><strong>Updates?</strong></summary><p data-i18n="faq_3_a">Continuous; pay once, get all.</p></details>
+      <div class="grid-3 micro-animate">
+        <details class="card glass anim-item"><summary data-i18n="faq_1_q"><strong>Who is this for?</strong></summary><p data-i18n="faq_1_a">Creators, solopreneurs, small teams.</p></details>
+        <details class="card glass anim-item"><summary data-i18n="faq_2_q"><strong>Refunds?</strong></summary><p data-i18n="faq_2_a">14-day, no-questions-asked.</p></details>
+        <details class="card glass anim-item"><summary data-i18n="faq_3_q"><strong>Updates?</strong></summary><p data-i18n="faq_3_a">Continuous; pay once, get all.</p></details>
       </div>
     </div>
   </section>
@@ -168,20 +208,20 @@
   <section class="pricing reveal">
     <div class="container">
       <h2 class="section-title" data-i18n="pricing_title">Pricing</h2>
-      <div class="grid-3">
-        <div class="card glass price">
+      <div class="grid-3 micro-animate">
+        <div class="card glass price anim-item">
           <h3 data-i18n="plan_starter_t">Starter</h3>
           <p data-i18n="plan_starter_d">Core modules</p>
           <p class="price-tag" data-i18n="price_starter">$49</p>
           <a class="btn btn-ghost" href="#" data-i18n="choose_btn">Choose</a>
         </div>
-        <div class="card glass price featured">
+        <div class="card glass price featured anim-item">
           <h3 data-i18n="plan_pro_t">Pro</h3>
           <p data-i18n="plan_pro_d">All modules + updates</p>
           <p class="price-tag" data-i18n="price_pro">$99</p>
           <a class="btn btn-primary" href="#" data-i18n="choose_btn">Choose</a>
         </div>
-        <div class="card glass price">
+        <div class="card glass price anim-item">
           <h3 data-i18n="plan_empire_t">Empire</h3>
           <p data-i18n="plan_empire_d">Pro + coaching slots</p>
           <p class="price-tag" data-i18n="price_empire">$199</p>
@@ -206,10 +246,10 @@
   <section class="blog reveal">
     <div class="container">
       <h2 class="section-title" data-i18n="blog_title">Latest notes</h2>
-      <div class="grid-3">
-        <article class="card glass"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
-        <article class="card glass"><h3 data-i18n="blog_2_t">Launch System</h3><p data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
-        <article class="card glass"><h3 data-i18n="blog_3_t">Offer Math</h3><p data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
+      <div class="grid-3 micro-animate">
+        <article class="card glass anim-item"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item"><h3 data-i18n="blog_2_t">Launch System</h3><p data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item"><h3 data-i18n="blog_3_t">Offer Math</h3><p data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
       </div>
     </div>
   </section>
@@ -222,9 +262,13 @@
     </div>
   </section>
 
+  <!-- MOUSE FOLLOWER DOT -->
+  <div id="dot"></div>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-content">
+      <p class="mission">Weltance — Turning raw ideas into resilient brands.</p>
       <p class="copyright">© 2025 Weltance. All rights reserved.</p>
       <div class="social-icons">
         <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
