@@ -77,7 +77,7 @@ html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;padding-bottom:140px}
 img{display:block;max-width:100%}
 .container{max-width:1200px;margin:0 auto;padding:0 1rem}
-.icon-btn{background:transparent;border:1px solid var(--line);border-radius:10px;padding:.4rem .6rem;cursor:pointer}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;padding:0;margin:0;cursor:pointer;line-height:1}
 .icon-btn:hover{filter:brightness(.96)}
 .page-enter{animation:fadeIn .5s ease both}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -87,13 +87,17 @@ img{display:block;max-width:100%}
   position:fixed;
   left:50%;
   transform:translateX(-50%);
-  width:min(96%, 1180px);
+  width:min(96%,1180px);
   bottom:12px;
   z-index:999;
   background:var(--surface);
   border:1px solid var(--brand);
-  border-radius:14px;
-  padding:.7rem .9rem;
+  border-radius:22px; /* bigger radius */
+  --dock-h:58px;
+  height:var(--dock-h);
+  padding:0 .9rem; /* fixed vertical padding = 0 to lock height */
+  display:flex;
+  align-items:center;
 }
 .progressbar{position:absolute;left:12px;right:12px;top:-6px;height:4px;background:rgba(44,79,135,.15);border-radius:999px;overflow:hidden}
 .progressbar span{display:block;height:100%;width:0%;background:var(--brand)}
@@ -274,13 +278,17 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
   position:fixed;
   left:50%;
   transform:translateX(-50%);
-  width:min(96%, 1180px);
+  width:min(96%,1180px);
   bottom:12px;
   z-index:999;
   background:var(--surface);
   border:1px solid var(--brand);
-  border-radius:14px;
-  padding:.7rem .9rem;
+  border-radius:22px; /* bigger radius */
+  --dock-h:58px;
+  height:var(--dock-h);
+  padding:0 .9rem; /* fixed vertical padding = 0 to lock height */
+  display:flex;
+  align-items:center;
 }
   .logo img{ width:24px; height:24px; }
   .logo span{ font-size:.95rem; }
@@ -348,9 +356,7 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
 
 /* Mobile panel polish */
 @media (max-width: 768px){
-  .nav-links{ 
-    display:none; position:fixed; left:50%; transform:translateX(-50%) translateY(10px);
-    bottom:calc(12px + 58px); width:calc(var(--vw) - 2rem);
+  .nav-links{ width:calc(var(--vw) - 2rem);
     padding:.85rem; gap:.65rem; flex-wrap:wrap; justify-content:space-between;
     background:#fff; border:1px solid var(--line); border-radius:14px; 
     box-shadow:none; opacity:0; transition:opacity .2s ease, transform .2s ease;
@@ -366,20 +372,36 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
   position:fixed;
   left:50%;
   transform:translateX(-50%);
-  width:min(96%, 1180px);
+  width:min(96%,1180px);
   bottom:12px;
   z-index:999;
   background:var(--surface);
   border:1px solid var(--brand);
-  border-radius:14px;
-  padding:.7rem .9rem;
+  border-radius:22px; /* bigger radius */
+  --dock-h:58px;
+  height:var(--dock-h);
+  padding:0 .9rem; /* fixed vertical padding = 0 to lock height */
+  display:flex;
+  align-items:center;
 }
 
 @media (max-width: 768px){
   .header{
-    width:min(96%, 680px);
-    bottom:12px;
-  }
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(96%,1180px);
+  bottom:12px;
+  z-index:999;
+  background:var(--surface);
+  border:1px solid var(--brand);
+  border-radius:22px; /* bigger radius */
+  --dock-h:58px;
+  height:var(--dock-h);
+  padding:0 .9rem; /* fixed vertical padding = 0 to lock height */
+  display:flex;
+  align-items:center;
+}
 }
 
 
@@ -402,3 +424,35 @@ section.hero{
 .hero .hero-inner{ margin-top:0 !important; padding-top:0 !important; }
 .hero h1.hero-title{ margin-top:0 !important; }
 .hero p.hero-subtitle{ margin-top:.6rem; } /* keep a little breathing space under title */
+
+
+/* v4.5.1 — navbar icon buttons spacing & light theme clarity */
+.nav{display:flex;align-items:center;gap:.6rem}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;padding:0;margin:0;cursor:pointer;line-height:1}
+/* Fallback in case some browsers ignore gap for buttons */
+.nav .icon-btn + .icon-btn{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--line);border-radius:10px;width:38px;height:38px;padding:0;margin:0;cursor:pointer;line-height:1}
+
+/* Light theme: give icon buttons a subtle surface so they don't visually "merge" */
+
+
+.header .container{max-width:none;width:100%;padding:0;height:100%;display:flex;align-items:center}
+.nav-container{height:100%}
+
+.nav .icon-btn{margin:0}
+
+#language-switcher{height:38px;line-height:38px;padding:0 .6rem;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit}
+
+.nav a{display:inline-flex;align-items:center;height:38px}
+
+@media (max-width:768px){
+  .nav-links{
+    position:fixed; left:50%; transform:translateX(-50%);
+    bottom:calc(12px + var(--dock-h) + 8px);
+    width:calc(var(--vw) - 2rem);
+    display:none; padding:.85rem; gap:.65rem; flex-wrap:wrap; justify-content:space-between;
+    background:#fff; border:1px solid var(--line); border-radius:14px; opacity:0; 
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .theme-dark .nav-links{ background:#0f141c; }
+  .nav.open .nav-links{ display:flex; opacity:1; transform:translateX(-50%) }
+}
