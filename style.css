@@ -12,7 +12,19 @@ img, video, canvas, svg{ max-width: 100%; height: auto; }
 section, .container, .divider.wave, .nav.open .nav-links{ max-width: var(--vw); }
 
 /* Ensure absolutely positioned hero BG never creates horizontal scroll */
-.hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
+.hero{
+  position:relative;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:clamp(560px, 92svh, 880px);
+  padding:0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.28'/>      <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.12'/>    </linearGradient>  </defs>  <rect width='100%' height='100%' fill='transparent'/>  <g fill='none' stroke='url(%23g)' stroke-width='1'>    <path d='M-60 80 C 140 20, 360 140, 560 80 S 1060 100, 1500 60' />    <path d='M-60 160 C 160 100, 380 220, 580 160 S 1080 180, 1500 140' />    <path d='M-60 240 C 180 180, 400 300, 600 240 S 1100 260, 1500 220' />    <path d='M-60 320 C 200 260, 420 380, 620 320 S 1120 340, 1500 300' />    <path d='M-60 400 C 220 340, 440 460, 640 400 S 1140 420, 1500 380' />    <path d='M-60 480 C 240 420, 460 540, 660 480 S 1160 500, 1500 460' />    <path d='M-60 560 C 260 500, 480 620, 680 560 S 1180 580, 1500 540' />    <path d='M-60 640 C 280 580, 500 700, 700 640 S 1200 660, 1500 620' />    <path d='M-60 720 C 300 660, 520 780, 720 720 S 1220 740, 1500 700' />    <path d='M-60 800 C 320 740, 540 860, 740 800 S 1240 820, 1500 780' />  </g></svg>");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.hero::after{
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:160px; pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 85%);
+}
 .dotgrid, .aurora{ contain: paint; will-change: transform; }
 .aurora{ inset: -5% auto auto -5%; } /* keep blobs inside hero painting area */
 
@@ -23,7 +35,19 @@ section, .container, .divider.wave, .nav.open .nav-links{ max-width: var(--vw); 
 
 /* Safe fallback for browsers without 'overflow: clip' */
 @supports not (overflow: clip){
-  .hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
+  .hero{
+  position:relative;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:clamp(560px, 92svh, 880px);
+  padding:0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.28'/>      <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.12'/>    </linearGradient>  </defs>  <rect width='100%' height='100%' fill='transparent'/>  <g fill='none' stroke='url(%23g)' stroke-width='1'>    <path d='M-60 80 C 140 20, 360 140, 560 80 S 1060 100, 1500 60' />    <path d='M-60 160 C 160 100, 380 220, 580 160 S 1080 180, 1500 140' />    <path d='M-60 240 C 180 180, 400 300, 600 240 S 1100 260, 1500 220' />    <path d='M-60 320 C 200 260, 420 380, 620 320 S 1120 340, 1500 300' />    <path d='M-60 400 C 220 340, 440 460, 640 400 S 1140 420, 1500 380' />    <path d='M-60 480 C 240 420, 460 540, 660 480 S 1160 500, 1500 460' />    <path d='M-60 560 C 260 500, 480 620, 680 560 S 1180 580, 1500 540' />    <path d='M-60 640 C 280 580, 500 700, 700 640 S 1200 660, 1500 620' />    <path d='M-60 720 C 300 660, 520 780, 720 720 S 1220 740, 1500 700' />    <path d='M-60 800 C 320 740, 540 860, 740 800 S 1240 820, 1500 780' />  </g></svg>");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.hero::after{
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:160px; pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 85%);
+}
 }
 
 html{scroll-behavior:smooth}
@@ -103,32 +127,37 @@ img{display:block;max-width:100%}
 }
 
 /* Robust hero background via ::before */
-.hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
-.hero::before{
-  content: "";
-  position: absolute; inset: -6% -6% -6% -6%; /* extra bleed to prevent cut-off */
-  z-index: -2;
-  opacity: .28;
-  background-image:
-    url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><defs>  <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>    <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.35'/>    <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.15'/>  </linearGradient></defs><g fill='none' stroke='url(%23g)' stroke-width='1'>  <path d='M-50 60 C 100 20, 200 100, 350 60 S 650 100, 850 60' />  <path d='M-50 120 C 120 80, 220 160, 360 120 S 660 160, 850 120' />  <path d='M-50 180 C 140 140, 240 220, 370 180 S 670 220, 850 180' />  <path d='M-50 240 C 160 200, 260 280, 380 240 S 680 280, 850 240' />  <path d='M-50 300 C 180 260, 280 340, 390 300 S 690 340, 850 300' />  <path d='M-50 360 C 200 320, 300 400, 400 360 S 700 400, 850 360' />  <path d='M-50 420 C 220 380, 320 460, 410 420 S 710 460, 850 420' />  <path d='M-50 480 C 240 440, 340 520, 420 480 S 720 520, 850 480' />  <path d='M-50 540 C 260 500, 360 580, 430 540 S 730 580, 850 540' /></g></svg>");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  will-change: transform;
+.hero{
+  position:relative;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:clamp(560px, 92svh, 880px);
+  padding:0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.28'/>      <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.12'/>    </linearGradient>  </defs>  <rect width='100%' height='100%' fill='transparent'/>  <g fill='none' stroke='url(%23g)' stroke-width='1'>    <path d='M-60 80 C 140 20, 360 140, 560 80 S 1060 100, 1500 60' />    <path d='M-60 160 C 160 100, 380 220, 580 160 S 1080 180, 1500 140' />    <path d='M-60 240 C 180 180, 400 300, 600 240 S 1100 260, 1500 220' />    <path d='M-60 320 C 200 260, 420 380, 620 320 S 1120 340, 1500 300' />    <path d='M-60 400 C 220 340, 440 460, 640 400 S 1140 420, 1500 380' />    <path d='M-60 480 C 240 420, 460 540, 660 480 S 1160 500, 1500 460' />    <path d='M-60 560 C 260 500, 480 620, 680 560 S 1180 580, 1500 540' />    <path d='M-60 640 C 280 580, 500 700, 700 640 S 1200 660, 1500 620' />    <path d='M-60 720 C 300 660, 520 780, 720 720 S 1220 740, 1500 700' />    <path d='M-60 800 C 320 740, 540 860, 740 800 S 1240 820, 1500 780' />  </g></svg>");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
 }
+.hero::after{
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:160px; pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 85%);
+}
+
 
 /* Soft radial vignette to blend edges */
-.hero::after{
-  content: "";
-  position: absolute; inset: -10%;
-  z-index: -1;
-  background: radial-gradient(1200px 600px at 50% -10%, rgba(44,79,135,.18), transparent 60%),
-              radial-gradient(1000px 500px at 50% 110%, rgba(44,79,135,.14), transparent 60%);
-  pointer-events: none;
-}
 
-.hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
+
+.hero{
+  position:relative;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:clamp(560px, 92svh, 880px);
+  padding:0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.28'/>      <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.12'/>    </linearGradient>  </defs>  <rect width='100%' height='100%' fill='transparent'/>  <g fill='none' stroke='url(%23g)' stroke-width='1'>    <path d='M-60 80 C 140 20, 360 140, 560 80 S 1060 100, 1500 60' />    <path d='M-60 160 C 160 100, 380 220, 580 160 S 1080 180, 1500 140' />    <path d='M-60 240 C 180 180, 400 300, 600 240 S 1100 260, 1500 220' />    <path d='M-60 320 C 200 260, 420 380, 620 320 S 1120 340, 1500 300' />    <path d='M-60 400 C 220 340, 440 460, 640 400 S 1140 420, 1500 380' />    <path d='M-60 480 C 240 420, 460 540, 660 480 S 1160 500, 1500 460' />    <path d='M-60 560 C 260 500, 480 620, 680 560 S 1180 580, 1500 540' />    <path d='M-60 640 C 280 580, 500 700, 700 640 S 1200 660, 1500 620' />    <path d='M-60 720 C 300 660, 520 780, 720 720 S 1220 740, 1500 700' />    <path d='M-60 800 C 320 740, 540 860, 740 800 S 1240 820, 1500 780' />  </g></svg>");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.hero::after{
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:160px; pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 85%);
+}
 .pattern-bg{background:radial-gradient(1200px 600px at -10% -10%, rgba(44,79,135,.10), transparent 60%),radial-gradient(1000px 500px at 110% 110%, rgba(44,79,135,.08), transparent 60%)}
 
 /* (aurora & dotgrid removed in v4.4.2) */
@@ -293,32 +322,19 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
 .theme-dark .glass{background:rgba(17,24,34,.55)}
 
 /* v4.4.5 Aurora background (no markup) */
-.hero::before, .hero::after{content:"";position:absolute;inset:-12%;z-index:-1;pointer-events:none;filter:blur(60px);opacity:.55}
-.hero::before{background:
-  radial-gradient(40% 40% at 25% 30%, rgba(44,79,135,.55), transparent 60%),
-  radial-gradient(35% 35% at 75% 70%, rgba(44,79,135,.35), transparent 60%);
-  animation:aur1 24s ease-in-out infinite alternate;
-}
-.hero::after{background:
-  radial-gradient(30% 30% at 60% 20%, rgba(44,79,135,.22), transparent 60%),
-  radial-gradient(28% 28% at 40% 80%, rgba(44,79,135,.18), transparent 60%);
-  animation:aur2 28s ease-in-out infinite alternate;
-}
+.hero::before, 
+
+
 @keyframes aur1{from{transform:translate(0,0) scale(1)}to{transform:translate(4%, -3%) scale(1.05)}}
 @keyframes aur2{from{transform:translate(0,0) scale(1)}to{transform:translate(-3%, 3%) scale(1.06)}}
 @media (prefers-reduced-motion: reduce){
-  .hero::before, .hero::after{animation:none}
+  .hero::before, 
 }
 
 /* v4.4.6 soft fade at bottom of hero to page background */
 .hero .inner-pad{padding:6rem 0 7rem} /* optional wrapper if needed */
-.hero::after{
-  content:""; position:absolute; left:0; right:0; bottom:-1px; height:140px; pointer-events:none; z-index:0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0), var(--bg) 80%);
-}
-.theme-dark .hero::after{
-  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 80%);
-}
+
+.theme-dark 
 
 /* Hamburger (3 bars to X) */
 .hamburger{display:inline-flex; align-items:center; justify-content:center; width:42px; height:36px; border-radius:10px; position:relative}
@@ -365,3 +381,24 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
     bottom:12px;
   }
 }
+
+
+/* v4.4.8 — kill any space above hero content */
+section.hero{
+  position:relative;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:clamp(560px, 92svh, 880px);
+  padding:0;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.28'/>      <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.12'/>    </linearGradient>  </defs>  <rect width='100%' height='100%' fill='transparent'/>  <g fill='none' stroke='url(%23g)' stroke-width='1'>    <path d='M-60 80 C 140 20, 360 140, 560 80 S 1060 100, 1500 60' />    <path d='M-60 160 C 160 100, 380 220, 580 160 S 1080 180, 1500 140' />    <path d='M-60 240 C 180 180, 400 300, 600 240 S 1100 260, 1500 220' />    <path d='M-60 320 C 200 260, 420 380, 620 320 S 1120 340, 1500 300' />    <path d='M-60 400 C 220 340, 440 460, 640 400 S 1140 420, 1500 380' />    <path d='M-60 480 C 240 420, 460 540, 660 480 S 1160 500, 1500 460' />    <path d='M-60 560 C 260 500, 480 620, 680 560 S 1180 580, 1500 540' />    <path d='M-60 640 C 280 580, 500 700, 700 640 S 1200 660, 1500 620' />    <path d='M-60 720 C 300 660, 520 780, 720 720 S 1220 740, 1500 700' />    <path d='M-60 800 C 320 740, 540 860, 740 800 S 1240 820, 1500 780' />  </g></svg>");
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.hero::after{
+  content:''; position:absolute; left:0; right:0; bottom:-1px; height:160px; pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 85%);
+}
+.hero > .container{ padding-top:0 !important; }
+.hero > *:first-child{ margin-top:0 !important; }
+.hero .hero-inner{ margin-top:0 !important; padding-top:0 !important; }
+.hero h1.hero-title{ margin-top:0 !important; }
+.hero p.hero-subtitle{ margin-top:.6rem; } /* keep a little breathing space under title */
