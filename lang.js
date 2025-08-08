@@ -1,5 +1,5 @@
-// i18n: EN, TR, FR, DE, RU, AR (rtl-aware)
-const translations = {
+// i18n: EN, TR, FR, DE, RU, AR (rtl-aware) + refreshed keys
+window.translations = {
   en: {
     nav_home:"Home", nav_product:"Product", nav_about:"About", nav_contact:"Contact",
     hero_title:"Where Ideas Thrive", hero_subtitle:"Build your digital empire with clarity and confidence.",
@@ -27,7 +27,9 @@ const translations = {
     price_starter:"$49", price_pro:"$99", price_empire:"$199", choose_btn:"Choose",
     newsletter_title:"Get one high-signal email/week", subscribe_btn:"Subscribe", email_placeholder:"you@brand.com",
     blog_title:"Latest notes", blog_1_t:"Zero→One Brand", blog_1_d:"Positioning in 30 minutes.", blog_2_t:"Launch System", blog_2_d:"Repeatable, with compounding.", blog_3_t:"Offer Math", blog_3_d:"Build pricing power, not discounts.",
-    cta_title:"Ready to start your journey?", cta_button:"Start Now"
+    read_btn:"Read",
+    cta_title:"Ready to start your journey?", cta_button:"Start Now",
+    mission:"Weltance — Turning raw ideas into resilient brands."
   },
   tr: {
     nav_home:"Ana Sayfa", nav_product:"Ürün", nav_about:"Hakkımızda", nav_contact:"İletişim",
@@ -56,7 +58,9 @@ const translations = {
     price_starter:"$49", price_pro:"$99", price_empire:"$199", choose_btn:"Seç",
     newsletter_title:"Haftada 1 yüksek sinyalli e‑posta", subscribe_btn:"Abone Ol", email_placeholder:"sen@marka.com",
     blog_title:"Son notlar", blog_1_t:"Sıfır→Bir Marka", blog_1_d:"30 dakikada konumlama.", blog_2_t:"Lansman Sistemi", blog_2_d:"Tekrarlanabilir ve bileşik.", blog_3_t:"Teklif Matematiği", blog_3_d:"İndirim değil, değer inşa et.",
-    cta_title:"Hazır mısın?", cta_button:"Şimdi Başla"
+    read_btn:"Oku",
+    cta_title:"Hazır mısın?", cta_button:"Şimdi Başla",
+    mission:"Weltance — Ham fikirleri dayanıklı markalara çeviriyoruz."
   },
   fr: {
     nav_home:"Accueil", nav_product:"Produit", nav_about:"À propos", nav_contact:"Contact",
@@ -85,7 +89,9 @@ const translations = {
     price_starter:"49 $", price_pro:"99 $", price_empire:"199 $", choose_btn:"Choisir",
     newsletter_title:"1 email à forte valeur / semaine", subscribe_btn:"S'abonner", email_placeholder:"vous@marque.com",
     blog_title:"Dernières notes", blog_1_t:"Marque Zéro→Un", blog_1_d:"Positionnement en 30 minutes.", blog_2_t:"Système de lancement", blog_2_d:"Répétable et cumulatif.", blog_3_t:"Maths de l'offre", blog_3_d:"Créez la valeur, pas les promos.",
-    cta_title:"Prêt à commencer ?", cta_button:"Commencer"
+    read_btn:"Lire",
+    cta_title:"Prêt à commencer ?", cta_button:"Commencer",
+    mission:"Weltance — Transformer les idées brutes en marques résilientes."
   },
   de: {
     nav_home:"Start", nav_product:"Produkt", nav_about:"Über uns", nav_contact:"Kontakt",
@@ -114,7 +120,9 @@ const translations = {
     price_starter:"49 $", price_pro:"99 $", price_empire:"199 $", choose_btn:"Wählen",
     newsletter_title:"1 wertvoller Newsletter / Woche", subscribe_btn:"Abonnieren", email_placeholder:"du@marke.com",
     blog_title:"Neueste Notizen", blog_1_t:"Marke Null→Eins", blog_1_d:"Positionierung in 30 Minuten.", blog_2_t:"Launch‑System", blog_2_d:"Wiederholbar, mit Zinseszins.", blog_3_t:"Angebots‑Mathe", blog_3_d:"Wert aufbauen, keine Rabatte.",
-    cta_title:"Bereit zu starten?", cta_button:"Jetzt starten"
+    read_btn:"Lesen",
+    cta_title:"Bereit zu starten?", cta_button:"Jetzt starten",
+    mission:"Weltance — Rohe Ideen in belastbare Marken verwandeln."
   },
   ru: {
     nav_home:"Главная", nav_product:"Продукт", nav_about:"О нас", nav_contact:"Контакты",
@@ -143,7 +151,9 @@ const translations = {
     price_starter:"$49", price_pro:"$99", price_empire:"$199", choose_btn:"Выбрать",
     newsletter_title:"1 письмо в неделю с пользой", subscribe_btn:"Подписаться", email_placeholder:"вы@бренд.com",
     blog_title:"Свежие заметки", blog_1_t:"Бренд Ноль→Один", blog_1_d:"Позиционирование за 30 минут.", blog_2_t:"Система запусков", blog_2_d:"Повторяемо, с ростом.", blog_3_t:"Математика оффера", blog_3_d:"Создавайте ценность, не скидки.",
-    cta_title:"Готовы начать?", cta_button:"Начать"
+    read_btn:"Читать",
+    cta_title:"Готовы начать?", cta_button:"Начать",
+    mission:"Weltance — Превращаем сырые идеи в устойчивые бренды."
   },
   ar: {
     nav_home:"الرئيسية", nav_product:"المنتج", nav_about:"من نحن", nav_contact:"تواصل",
@@ -172,19 +182,21 @@ const translations = {
     price_starter:"$49", price_pro:"$99", price_empire:"$199", choose_btn:"اختر",
     newsletter_title:"رسالة أسبوعية عالية الفائدة", subscribe_btn:"اشترك", email_placeholder:"you@brand.com",
     blog_title:"أحدث الملاحظات", blog_1_t:"علامة من الصفر", blog_1_d:"تموضع خلال 30 دقيقة.", blog_2_t:"نظام الإطلاق", blog_2_d:"متكرر ومتراكم.", blog_3_t:"رياضيات العرض", blog_3_d:"ابنِ القيمة لا الخصم.",
-    cta_title:"جاهز للبدء؟", cta_button:"ابدأ الآن"
+    read_btn:"اقرأ",
+    cta_title:"جاهز للبدء؟", cta_button:"ابدأ الآن",
+    mission:"Weltance — نحول الأفكار الخام إلى علامات متينة."
   }
 };
 
 function applyTranslations(lang){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.getAttribute('data-i18n');
-    const val = translations?.[lang]?.[key];
+    const val = window.translations?.[lang]?.[key];
     if(val !== undefined){ el.textContent = val; }
   });
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
     const key = el.getAttribute('data-i18n-ph');
-    const val = translations?.[lang]?.[key];
+    const val = window.translations?.[lang]?.[key];
     if(val !== undefined){ el.setAttribute('placeholder', val); }
   });
   document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -201,7 +213,6 @@ function applyTranslations(lang){
       const lang = e.target.value;
       localStorage.setItem('lang', lang);
       applyTranslations(lang);
-      // restart typed line with new language variants
       if (window.startTyped) window.startTyped(lang);
     });
     ['click','touchstart'].forEach(evt=> select.addEventListener(evt, (e)=> e.stopPropagation(), {passive:true}));

@@ -1,18 +1,14 @@
-// Reveal on scroll (sections)
+// --- Common interactions (reveal, parallax, etc.) ---
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Micro-animations for cards/items
 const ioItems = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('show'); ioItems.unobserve(e.target); }
-  });
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); ioItems.unobserve(e.target); } });
 }, { threshold: 0.25 });
 document.querySelectorAll('.micro-animate .anim-item').forEach(el=> ioItems.observe(el));
 
-// Parallax (mild) - desktop only; mobile hides .decor via CSS
 const px = document.querySelectorAll('[data-parallax]');
 window.addEventListener('scroll', ()=>{
   const y = window.scrollY;
@@ -22,7 +18,6 @@ window.addEventListener('scroll', ()=>{
   });
 }, { passive: true });
 
-// Magnetic buttons
 document.querySelectorAll('.magnetic').forEach(btn=>{
   const k = 16;
   btn.addEventListener('mousemove', e=>{
@@ -33,7 +28,6 @@ document.querySelectorAll('.magnetic').forEach(btn=>{
   btn.addEventListener('mouseleave', ()=> btn.style.transform='');
 });
 
-// Theme toggle (persisted + emoji state)
 const root = document.documentElement;
 const themeBtn = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('theme');
@@ -45,7 +39,6 @@ if(themeBtn){ setEmoji(); themeBtn.addEventListener('click', ()=>{
   setEmoji();
 });}
 
-// Scrollspy
 const ids=['home','product','about','contact'];
 const links = new Map(ids.map(id=>[id, document.querySelector(`a[href="#${id}"]`)]));
 const spy=new IntersectionObserver((es)=>{
@@ -59,7 +52,6 @@ const spy=new IntersectionObserver((es)=>{
 },{rootMargin:'-40% 0px -50% 0px', threshold:0.01});
 ids.forEach(id=>{ const el=document.getElementById(id); if(el) spy.observe(el); });
 
-// Counters
 const counters=document.querySelectorAll('.count');
 const io2=new IntersectionObserver((es)=>{
   es.forEach(en=>{
@@ -73,13 +65,11 @@ const io2=new IntersectionObserver((es)=>{
 },{threshold:0.4});
 counters.forEach(c=>io2.observe(c));
 
-// Newsletter demo
 document.getElementById('newsletter-form')?.addEventListener('submit', (e)=>{
   e.preventDefault();
   alert('Subscribed!');
 });
 
-// Mobile hamburger toggle
 const navEl = document.querySelector('.nav');
 const navToggle = document.getElementById('nav-toggle');
 navToggle?.addEventListener('click', (ev)=>{
@@ -87,19 +77,18 @@ navToggle?.addEventListener('click', (ev)=>{
   const open = navEl.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
-// Close only on anchor click (not on select)
 document.querySelectorAll('.nav-links a').forEach(el=>{
   el.addEventListener('click', ()=> navEl.classList.remove('open'));
 });
-// Avoid closing when tapping inside the panel
 document.querySelector('.nav-links')?.addEventListener('click', e=> e.stopPropagation());
 document.addEventListener('click', ()=> navEl.classList.remove('open'));
 
-// --- Typed text effect (language-aware) ---
+// Typed text (language aware)
 window.startTyped = function(lang){
   const el = document.getElementById('typed');
   if(!el) return;
-  const set = (window.translations && window.translations[lang] && window.translations[lang].typed_variants) || ["Build. Scale. Dominate."];
+  const dict = (window.translations && window.translations[lang]) || {};
+  const set = dict.typed_variants || ["Build. Scale. Dominate."];
   let i=0, j=0, dir=1;
   function tick(){
     const word = set[i];
@@ -111,26 +100,27 @@ window.startTyped = function(lang){
   }
   tick();
 };
-// boot with saved language
 window.addEventListener('DOMContentLoaded', ()=>{
   const saved = localStorage.getItem('lang') || 'en';
   window.startTyped(saved);
 });
 
-// --- Testimonials carousel ---
+// Testimonials carousel
 (function(){
-  const track = document.querySelector('#testimonial-carousel .carousel-track');
-  if(!track) return;
-  let index = 0;
+  const carousel = document.getElementById('testimonial-carousel');
+  if(!carousel) return;
+  const track = carousel.querySelector('.carousel-track');
   const slides = Array.from(track.children);
+  let index = 0;
   function update(){ track.style.transform = `translateX(${-index*100}%)`; }
-  document.querySelector('#testimonial-carousel .prev')?.addEventListener('click', ()=>{ index = (index-1+slides.length)%slides.length; update(); });
-  document.querySelector('#testimonial-carousel .next')?.addEventListener('click', ()=>{ index = (index+1)%slides.length; update(); });
-  // auto-play
-  setInterval(()=>{ index = (index+1)%slides.length; update(); }, 5000);
+  carousel.querySelector('.prev')?.addEventListener('click', ()=>{ index = (index-1+slides.length)%slides.length; update(); });
+  carousel.querySelector('.next')?.addEventListener('click', ()=>{ index = (index+1)%slides.length; update(); });
+  let timer = setInterval(()=>{ index = (index+1)%slides.length; update(); }, 5000);
+  carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
+  carousel.addEventListener('mouseleave', ()=> timer = setInterval(()=>{ index = (index+1)%slides.length; update(); }, 5000));
 })();
 
-// --- Mouse follower dot ---
+// Mouse follower
 (function(){
   const dot = document.getElementById('dot'); if(!dot) return;
   let x=0, y=0, tx=0, ty=0;
@@ -141,4 +131,56 @@ window.addEventListener('DOMContentLoaded', ()=>{
     requestAnimationFrame(loop);
   }
   loop();
+})();
+
+// --- Topography Canvas Animation ---
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w=0, h=0, dpr=1, t=0;
+  function fit(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    w = Math.max(1, rect.width);
+    h = Math.max(1, rect.height);
+    canvas.width = Math.floor(w*dpr);
+    canvas.height = Math.floor(h*dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  const ro = new ResizeObserver(fit); ro.observe(canvas.parentElement);
+  fit();
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced) return;
+
+  function noise2D(x,y){
+    // simple value noise via sine; visually smooth and very cheap
+    return Math.sin(x*0.0018 + y*0.0012) + Math.sin(x*0.0009 - y*0.0014);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand').trim() || '#2c4f87';
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = brand + '55';
+    const step = 18; // contour step (px)
+    const amp = 28;  // wave amplitude
+    for(let y=0; y<h+step; y+=step){
+      ctx.beginPath();
+      for(let x=0; x<=w; x+=8){
+        const n = noise2D(x + t*0.6, y - t*0.35);
+        const oy = Math.sin((x*0.012) + t*0.02) * 3 + n * 4;
+        const yy = y + Math.sin((y*0.02)+t*0.02)*1.2 + oy;
+        if(x===0) ctx.moveTo(x, yy);
+        else ctx.lineTo(x, yy);
+      }
+      ctx.stroke();
+    }
+    t += 1.2;
+    requestAnimationFrame(draw);
+  }
+  draw();
 })();

@@ -38,18 +38,12 @@
     </div>
   </header>
 
-  <!-- HERO with optional background video + typed text -->
+  <!-- HERO with Topography Canvas -->
   <section class="hero pattern-bg" id="home">
-    <div class="hero-video-wrap">
-      <!-- Drop your optimized loop video as assets/hero.mp4 or hero.webm; this auto-plays if present -->
-      <video class="hero-video" autoplay muted loop playsinline poster="" onerror="this.style.display='none'">
-        <source src="./assets/hero.webm" type="video/webm" />
-        <source src="./assets/hero.mp4" type="video/mp4" />
-      </video>
-    </div>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
-    <div class="decor decor-1" data-parallax data-speed="0.12"></div>
-    <div class="decor decor-2" data-parallax data-speed="-0.08"></div>
+    <div class="decor decor-1" data-parallax data-speed="0.08"></div>
+    <div class="decor decor-2" data-parallax data-speed="-0.05"></div>
     <div class="grain"></div>
 
     <div class="container hero-inner reveal">
@@ -143,22 +137,24 @@
       <h2 class="section-title" data-i18n="testimonials_title">What early users say</h2>
       <div class="carousel glass" id="testimonial-carousel" aria-roledescription="carousel">
         <button class="carousel-btn prev" aria-label="Previous">‹</button>
-        <div class="carousel-track">
-          <figure class="slide">
-            <img class="avatar" src="https://picsum.photos/seed/a/80/80" alt="user" />
-            <blockquote>“Clean. Direct. Finally a pack that makes me ship.”</blockquote>
-            <figcaption>— Creator, Beta Cohort</figcaption>
-          </figure>
-          <figure class="slide">
-            <img class="avatar" src="https://picsum.photos/seed/b/80/80" alt="user" />
-            <blockquote>“From zero to traction in weeks. Worth it.”</blockquote>
-            <figcaption>— Solo Founder</figcaption>
-          </figure>
-          <figure class="slide">
-            <img class="avatar" src="https://picsum.photos/seed/c/80/80" alt="user" />
-            <blockquote>“The structure is gold. I stopped procrastinating.”</blockquote>
-            <figcaption>— Content Designer</figcaption>
-          </figure>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <figure class="slide">
+              <img class="avatar" src="https://picsum.photos/seed/a/80/80" alt="user" />
+              <blockquote>“Clean. Direct. Finally a pack that makes me ship.”</blockquote>
+              <figcaption>— Creator, Beta Cohort</figcaption>
+            </figure>
+            <figure class="slide">
+              <img class="avatar" src="https://picsum.photos/seed/b/80/80" alt="user" />
+              <blockquote>“From zero to traction in weeks. Worth it.”</blockquote>
+              <figcaption>— Solo Founder</figcaption>
+            </figure>
+            <figure class="slide">
+              <img class="avatar" src="https://picsum.photos/seed/c/80/80" alt="user" />
+              <blockquote>“The structure is gold. I stopped procrastinating.”</blockquote>
+              <figcaption>— Content Designer</figcaption>
+            </figure>
+          </div>
         </div>
         <button class="carousel-btn next" aria-label="Next">›</button>
       </div>
@@ -247,9 +243,9 @@
     <div class="container">
       <h2 class="section-title" data-i18n="blog_title">Latest notes</h2>
       <div class="grid-3 micro-animate">
-        <article class="card glass anim-item"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
-        <article class="card glass anim-item"><h3 data-i18n="blog_2_t">Launch System</h3><p data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
-        <article class="card glass anim-item"><h3 data-i18n="blog_3_t">Offer Math</h3><p data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item"><h3 data-i18n="blog_1_t">Zero→One Brand</h3><p class="teaser" data-i18n="blog_1_d">Positioning in 30 minutes.</p><a class="btn btn-ghost read-btn" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item"><h3 data-i18n="blog_2_t">Launch System</h3><p class="teaser" data-i18n="blog_2_d">Repeatable, with compounding.</p><a class="btn btn-ghost read-btn" href="#" data-i18n="read_btn">Read</a></article>
+        <article class="card glass anim-item"><h3 data-i18n="blog_3_t">Offer Math</h3><p class="teaser" data-i18n="blog_3_d">Build pricing power, not discounts.</p><a class="btn btn-ghost read-btn" href="#" data-i18n="read_btn">Read</a></article>
       </div>
     </div>
   </section>
@@ -268,7 +264,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-content">
-      <p class="mission">Weltance — Turning raw ideas into resilient brands.</p>
+      <p class="mission" data-i18n="mission">Weltance — Turning raw ideas into resilient brands.</p>
       <p class="copyright">© 2025 Weltance. All rights reserved.</p>
       <div class="social-icons">
         <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
