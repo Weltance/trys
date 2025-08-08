@@ -19,7 +19,7 @@
         <span>Weltance</span>
       </div>
       <nav class="nav" aria-label="Primary">
-        <button id="nav-toggle" class="icon-btn" aria-label="Menu" aria-expanded="false" title="Menu">☰</button>
+        <button id="nav-toggle" class="icon-btn hamburger" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
         <div class="nav-links">
           <a href="#home" data-i18n="nav_home">Home</a>
@@ -44,13 +44,6 @@
 
   <!-- HERO with CSS Aurora (no canvas) -->
   <section class="hero pattern-bg" id="home">
-    <!-- Aurora blobs -->
-    <div class="aurora a1" aria-hidden="true"></div>
-    <div class="aurora a2" aria-hidden="true"></div>
-    <div class="aurora a3" aria-hidden="true"></div>
-    <!-- Dotted grid overlay -->
-    <div class="dotgrid" aria-hidden="true"></div>
-
     <div class="container hero-inner reveal">
       <h1 class="hero-title" data-i18n="hero_title">Where Ideas Thrive</h1>
       <p class="hero-subtitle" data-i18n="hero_subtitle">Build your digital empire with clarity and confidence.</p>
@@ -66,8 +59,8 @@
       </div>
 
       <div class="hero-ctas">
-        <a href="#product" class="btn btn-primary magnetic" data-i18n="hero_cta_primary">Explore the Pack</a>
-        <a href="#about" class="btn btn-ghost magnetic" data-i18n="hero_cta_secondary">Why Weltance</a>
+        <a href="#product" class="btn btn-primary" data-i18n="hero_cta_primary">Explore the Pack</a>
+        <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_secondary">Why Weltance</a>
       </div>
     </div>
     <div class="divider wave bottom"></div>
@@ -164,19 +157,19 @@
         <div class="carousel-viewport">
           <div class="carousel-track">
             <figure class="slide">
-              <img class="avatar" src="https://picsum.photos/seed/a/80/80" alt="user" />
-              <blockquote>“Clean. Direct. Finally a pack that makes me ship.”</blockquote>
-              <figcaption>— Creator, Beta Cohort</figcaption>
+              <img class="avatar" src="https://i.pravatar.cc/80?img=12" alt="Ava Martinez" />
+              <blockquote>“Structured, no fluff. I shipped my first offer in 10 days.”</blockquote>
+              <figcaption>— Ava Martinez • Creator</figcaption>
             </figure>
             <figure class="slide">
-              <img class="avatar" src="https://picsum.photos/seed/b/80/80" alt="user" />
-              <blockquote>“From zero to traction in weeks. Worth it.”</blockquote>
-              <figcaption>— Solo Founder</figcaption>
+              <img class="avatar" src="https://i.pravatar.cc/80?img=16" alt="Noah Becker" />
+              <blockquote>“Clear playbooks. My newsletter doubled in a month.”</blockquote>
+              <figcaption>— Noah Becker • Solo Founder</figcaption>
             </figure>
             <figure class="slide">
-              <img class="avatar" src="https://picsum.photos/seed/c/80/80" alt="user" />
-              <blockquote>“The structure is gold. I stopped procrastinating.”</blockquote>
-              <figcaption>— Content Designer</figcaption>
+              <img class="avatar" src="https://i.pravatar.cc/80?img=32" alt="Lena Petrova" />
+              <blockquote>“Finally a system that keeps momentum. Worth every cent.”</blockquote>
+              <figcaption>— Lena Petrova • Product Designer</figcaption>
             </figure>
           </div>
         </div>
@@ -283,12 +276,9 @@
   <section class="cta reveal" id="contact">
     <div class="container">
       <h2 data-i18n="cta_title">Ready to start your journey?</h2>
-      <a href="#" class="cta-btn magnetic" data-i18n="cta_button">Start Now</a>
+      <a href="#" class="cta-btn" data-i18n="cta_button">Start Now</a>
     </div>
   </section>
-
-  <!-- MOUSE FOLLOWER DOT -->
-  <div id="dot"></div>
 
   <!-- FOOTER -->
   <footer class="footer">

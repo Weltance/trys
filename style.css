@@ -12,7 +12,7 @@ img, video, canvas, svg{ max-width: 100%; height: auto; }
 section, .container, .divider.wave, .nav.open .nav-links{ max-width: var(--vw); }
 
 /* Ensure absolutely positioned hero BG never creates horizontal scroll */
-.hero{ overflow: clip; contain: paint; }
+.hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
 .dotgrid, .aurora{ contain: paint; will-change: transform; }
 .aurora{ inset: -5% auto auto -5%; } /* keep blobs inside hero painting area */
 
@@ -23,7 +23,7 @@ section, .container, .divider.wave, .nav.open .nav-links{ max-width: var(--vw); 
 
 /* Safe fallback for browsers without 'overflow: clip' */
 @supports not (overflow: clip){
-  .hero{ overflow: hidden; }
+  .hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
 }
 
 html{scroll-behavior:smooth}
@@ -59,7 +59,18 @@ img{display:block;max-width:100%}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* Bottom Dock Navbar */
-.header{background:var(--surface);border:1px solid var(--brand);padding:1rem 1rem;position:fixed;width:95%;left:50%;transform:translateX(-50%);bottom:20px;z-index:999;border-radius:16px}
+.header{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(96%, 1180px);
+  bottom:12px;
+  z-index:999;
+  background:var(--surface);
+  border:1px solid var(--brand);
+  border-radius:14px;
+  padding:.7rem .9rem;
+}
 .progressbar{position:absolute;left:12px;right:12px;top:-6px;height:4px;background:rgba(44,79,135,.15);border-radius:999px;overflow:hidden}
 .progressbar span{display:block;height:100%;width:0%;background:var(--brand)}
 .nav-container{display:flex;justify-content:space-between;align-items:center;width:100%}
@@ -78,22 +89,49 @@ img{display:block;max-width:100%}
 #to-top.show{opacity:1;pointer-events:auto;transform:none}
 
 /* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:8rem 0 12rem}
+
+/* --- v4.4.2 hero line pattern & safe vh --- */
+/* Safe viewport height to avoid URL bar resize glitches */
+:root{
+  --svh: 100vh;
+}
+@supports (height: 100dvh){
+  :root{ --svh: 100dvh; }
+}
+@supports (height: 100svh){
+  :root{ --svh: 100svh; }
+}
+
+/* Robust hero background via ::before */
+.hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
+.hero::before{
+  content: "";
+  position: absolute; inset: -6% -6% -6% -6%; /* extra bleed to prevent cut-off */
+  z-index: -2;
+  opacity: .28;
+  background-image:
+    url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><defs>  <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>    <stop offset='0%' stop-color='%232c4f87' stop-opacity='0.35'/>    <stop offset='100%' stop-color='%232c4f87' stop-opacity='0.15'/>  </linearGradient></defs><g fill='none' stroke='url(%23g)' stroke-width='1'>  <path d='M-50 60 C 100 20, 200 100, 350 60 S 650 100, 850 60' />  <path d='M-50 120 C 120 80, 220 160, 360 120 S 660 160, 850 120' />  <path d='M-50 180 C 140 140, 240 220, 370 180 S 670 220, 850 180' />  <path d='M-50 240 C 160 200, 260 280, 380 240 S 680 280, 850 240' />  <path d='M-50 300 C 180 260, 280 340, 390 300 S 690 340, 850 300' />  <path d='M-50 360 C 200 320, 300 400, 400 360 S 700 400, 850 360' />  <path d='M-50 420 C 220 380, 320 460, 410 420 S 710 460, 850 420' />  <path d='M-50 480 C 240 440, 340 520, 420 480 S 720 520, 850 480' />  <path d='M-50 540 C 260 500, 360 580, 430 540 S 730 580, 850 540' /></g></svg>");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Soft radial vignette to blend edges */
+.hero::after{
+  content: "";
+  position: absolute; inset: -10%;
+  z-index: -1;
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(44,79,135,.18), transparent 60%),
+              radial-gradient(1000px 500px at 50% 110%, rgba(44,79,135,.14), transparent 60%);
+  pointer-events: none;
+}
+
+.hero{height:var(--svh);min-height:var(--svh);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0;background:none;isolation:isolate}
 .pattern-bg{background:radial-gradient(1200px 600px at -10% -10%, rgba(44,79,135,.10), transparent 60%),radial-gradient(1000px 500px at 110% 110%, rgba(44,79,135,.08), transparent 60%)}
 
-/* Aurora blobs */
-.aurora{position:absolute;filter:blur(60px);opacity:.55;pointer-events:none}
-.a1{width:60vmax;height:60vmax;background:radial-gradient(45% 45% at 45% 45%, rgba(44,79,135,.55), transparent 60%);left:-20%;top:-10%;animation:float1 18s ease-in-out infinite alternate}
-.a2{width:50vmax;height:50vmax;background:radial-gradient(45% 45% at 55% 55%, rgba(44,79,135,.35), transparent 60%);right:-10%;bottom:-10%;animation:float2 22s ease-in-out infinite alternate}
-.a3{width:40vmax;height:40vmax;background:radial-gradient(45% 45% at 50% 50%, rgba(44,79,135,.28), transparent 60%);left:20%;bottom:-20%;animation:float3 20s ease-in-out infinite alternate}
-@keyframes float1{from{transform:translate(0,0) scale(1)}to{transform:translate(8%, -6%) scale(1.05)}}
-@keyframes float2{from{transform:translate(0,0) scale(1)}to{transform:translate(-6%, 6%) scale(1.08)}}
-@keyframes float3{from{transform:translate(0,0) scale(1)}to{transform:translate(4%, -4%) scale(1.03)}}
-
-/* Dot grid overlay */
-.dotgrid{position:absolute;inset:0;background-image:radial-gradient(rgba(44,79,135,.14) 1px, transparent 1px);background-size:22px 22px;opacity:.3;pointer-events:none}
-
-/* Grain (kept, subtle) */
+/* (aurora & dotgrid removed in v4.4.2) */
 .grain{display:none} /* removed to keep hero clean */
 
 /* Titles / text */
@@ -112,7 +150,7 @@ img{display:block;max-width:100%}
 .btn-ghost:hover{background:rgba(44,79,135,.06)}
 
 /* Glass */
-.glass{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--line);border-radius:var(--glass-br)}
+.glass{background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:12px}
 
 /* Wave dividers */
 .divider.wave{position:absolute;left:0;right:0;height:80px;pointer-events:none;background-repeat:no-repeat;background-size:cover}
@@ -126,7 +164,7 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
 .section-title{text-align:center;font-size:clamp(1.6rem,3vw,2rem);margin-bottom:2rem}
 
 /* Micro animations */
-.micro-animate .anim-item{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .6s ease, transform .6s ease}
+.micro-animate .anim-item{opacity:1;transform:none}
 .micro-animate .anim-item.show{opacity:1;transform:none}
 
 /* Grid & cards */
@@ -192,18 +230,29 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
 .social-icons img{width:24px;height:24px;filter:invert(1)}
 
 /* Reveal */
-.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+.reveal{opacity:1;transform:none}
 .reveal.show{opacity:1;transform:none}
 
 /* Reduced motion: pause aurora */
 @media (prefers-reduced-motion: reduce){
-  .reveal{transition:none}
+  .reveal{opacity:1;transform:none}
   .aurora{animation:none !important}
 }
 
 /* Mobile */
 @media (max-width: 640px) {
-  .header{ width:96%; padding:.6rem .9rem; bottom:12px; }
+  .header{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(96%, 1180px);
+  bottom:12px;
+  z-index:999;
+  background:var(--surface);
+  border:1px solid var(--brand);
+  border-radius:14px;
+  padding:.7rem .9rem;
+}
   .logo img{ width:24px; height:24px; }
   .logo span{ font-size:.95rem; }
 
@@ -239,4 +288,80 @@ section.reveal:not(.hero):not(.product-section):not(.cta){ padding: 6rem 0; }
 @media (min-width: 641px) {
   .nav .nav-links { display:flex; gap:1rem; }
   #nav-toggle { display:none; }
+}
+
+.theme-dark .glass{background:rgba(17,24,34,.55)}
+
+/* v4.4.5 Aurora background (no markup) */
+.hero::before, .hero::after{content:"";position:absolute;inset:-12%;z-index:-1;pointer-events:none;filter:blur(60px);opacity:.55}
+.hero::before{background:
+  radial-gradient(40% 40% at 25% 30%, rgba(44,79,135,.55), transparent 60%),
+  radial-gradient(35% 35% at 75% 70%, rgba(44,79,135,.35), transparent 60%);
+  animation:aur1 24s ease-in-out infinite alternate;
+}
+.hero::after{background:
+  radial-gradient(30% 30% at 60% 20%, rgba(44,79,135,.22), transparent 60%),
+  radial-gradient(28% 28% at 40% 80%, rgba(44,79,135,.18), transparent 60%);
+  animation:aur2 28s ease-in-out infinite alternate;
+}
+@keyframes aur1{from{transform:translate(0,0) scale(1)}to{transform:translate(4%, -3%) scale(1.05)}}
+@keyframes aur2{from{transform:translate(0,0) scale(1)}to{transform:translate(-3%, 3%) scale(1.06)}}
+@media (prefers-reduced-motion: reduce){
+  .hero::before, .hero::after{animation:none}
+}
+
+/* v4.4.6 soft fade at bottom of hero to page background */
+.hero .inner-pad{padding:6rem 0 7rem} /* optional wrapper if needed */
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:140px; pointer-events:none; z-index:0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), var(--bg) 80%);
+}
+.theme-dark .hero::after{
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg) 80%);
+}
+
+/* Hamburger (3 bars to X) */
+.hamburger{display:inline-flex; align-items:center; justify-content:center; width:42px; height:36px; border-radius:10px; position:relative}
+.hamburger .bar{display:block; width:22px; height:2px; background:currentColor; border-radius:2px; position:absolute; transition:transform .25s ease, opacity .2s ease}
+.hamburger .bar:nth-child(1){transform:translateY(-6px)}
+.hamburger .bar:nth-child(2){transform:translateY(0)}
+.hamburger .bar:nth-child(3){transform:translateY(6px)}
+.nav.open .hamburger .bar:nth-child(1){transform:rotate(45deg)}
+.nav.open .hamburger .bar:nth-child(2){opacity:0}
+.nav.open .hamburger .bar:nth-child(3){transform:rotate(-45deg)}
+
+/* Mobile panel polish */
+@media (max-width: 768px){
+  .nav-links{ 
+    display:none; position:fixed; left:50%; transform:translateX(-50%) translateY(10px);
+    bottom:calc(12px + 58px); width:calc(var(--vw) - 2rem);
+    padding:.85rem; gap:.65rem; flex-wrap:wrap; justify-content:space-between;
+    background:#fff; border:1px solid var(--line); border-radius:14px; 
+    box-shadow:none; opacity:0; transition:opacity .2s ease, transform .2s ease;
+  }
+  .theme-dark .nav-links{ background:#0f141c; }
+  .nav.open .nav-links{ display:flex; opacity:1; transform:translateX(-50%) translateY(0) }
+  .nav-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.25); display:none; }
+  .nav.open ~ .nav-backdrop{ display:block; }
+}
+
+/* Keep bottom dock width & look */
+.header{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(96%, 1180px);
+  bottom:12px;
+  z-index:999;
+  background:var(--surface);
+  border:1px solid var(--brand);
+  border-radius:14px;
+  padding:.7rem .9rem;
+}
+
+@media (max-width: 768px){
+  .header{
+    width:min(96%, 680px);
+    bottom:12px;
+  }
 }
