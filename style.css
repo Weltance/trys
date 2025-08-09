@@ -440,9 +440,9 @@ section.hero{
 
 .nav .icon-btn{margin:0}
 
-#language-switcher{height:38px;line-height:38px;padding:0 .6rem;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit}
+#language-switcher{\1 42px;line-\1 42px;padding:0 .6rem;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit}
 
-.nav a{display:inline-flex;align-items:center;height:38px}
+.nav a{display:inline-flex;align-items:center;\1 42px}
 
 @media (max-width:768px){
   .nav-links{
@@ -463,5 +463,8 @@ section.hero{
 .theme-dark #language-switcher option{ background:#0b0f14; color:#e9eef6; }
 
 /* HAMBURGER COLOR */
+.hamburger{ color: var(--brand); }
+.theme-dark .hamburger{ color: #e9eef6; }
+
 .hamburger{ color: var(--brand); }
 .theme-dark .hamburger{ color: #e9eef6; }
