@@ -192,3 +192,51 @@
 
   update(); start();
 })();
+
+
+// === Newsletter form → /api/subscribe (fetch) ===
+(function(){
+  const form = document.getElementById('newsletter-form');
+  if(!form) return;
+  const input = form.querySelector('input[type="email"]');
+  const button = form.querySelector('button[type="submit"]');
+  const note = document.createElement('div');
+  note.className = 'note';
+  form.appendChild(note);
+
+  function flash(msg, ok){
+    note.textContent = msg;
+    note.style.marginTop = '8px';
+    note.style.fontSize = '0.95rem';
+    note.style.opacity = '0.9';
+    note.style.color = ok ? 'var(--brand)' : 'crimson';
+  }
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const email = (input?.value || '').trim();
+    if(!email){ flash('Email gerekli / Email required', false); return; }
+    button.disabled = true;
+    button.textContent = (localStorage.getItem('lang')||'en') === 'tr' ? 'Gönderiliyor...' : 'Submitting...';
+
+    try{
+      const res = await fetch('/api/subscribe', {
+        method:'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json().catch(()=>({ok:false}));
+      if(res.ok && data.ok){
+        flash(((localStorage.getItem('lang')||'en') === 'tr') ? 'Abone oldun! 🎉' : 'You are subscribed! 🎉', true);
+        form.reset();
+      }else{
+        flash(data.error || 'Error', false);
+      }
+    }catch(err){
+      flash('Network error', false);
+    }finally{
+      button.disabled = false;
+      button.textContent = (localStorage.getItem('lang')||'en') === 'tr' ? 'Abone Ol' : 'Subscribe';
+    }
+  });
+})();

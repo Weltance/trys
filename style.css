@@ -537,3 +537,5 @@ section.hero{
 .mock-frame{ position:relative; overflow:hidden; border-radius:16px; border:1px solid var(--line); }
 .mock-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .mock-gradient{ pointer-events:none; }
+
+.form .note{ text-align:center; }
