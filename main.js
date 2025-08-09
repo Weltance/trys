@@ -33,8 +33,15 @@
 (function(){
   const sel = document.getElementById('language-switcher');
   const saved = localStorage.getItem('lang') || 'en';
+  /* backfill translations */
+  (function(){
+    const t = window.translations || {}; const en = t.en || {};
+    Object.keys(t).forEach(k=>{ if(k==='en') return; const d=t[k]; if(!d) return; Object.keys(en).forEach(key=>{ if(!(key in d)) d[key]=en[key]; }); });
+  })();
   if(sel) sel.value = saved;
   function apply(lang){
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     const dict = (window.translations && window.translations[lang]) || {};
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const key = el.getAttribute('data-i18n'); if(dict[key]) el.textContent = dict[key];
