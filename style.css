@@ -456,3 +456,25 @@ section.hero{
   .theme-dark .nav-links{ background:#0f141c; }
   .nav.open .nav-links{ display:flex; opacity:1; transform:translateX(-50%) }
 }
+
+
+/* WHY WELTANCE */
+.why { padding: 6rem 0; position: relative; }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.why-card { padding: 1.5rem; }
+.why-card h3 { margin-bottom: .5rem; }
+.why-card p { color: var(--muted); }
+.why-list, .why-steps { margin-top: .5rem; display: grid; gap: .35rem; padding-left: 1rem; }
+.badge-list { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0 .9rem; }
+.badge { border: 1px solid var(--line); background: rgba(44,79,135,.07); color: var(--brand); padding: .35rem .6rem; border-radius: 999px; font-size: .85rem; font-weight: 700; }
+.why-mission { margin-top: .25rem; font-weight: 600; }
+@media (max-width: 640px){ .why-grid { grid-template-columns: 1fr; } }
+
+
+/* Footer refresh */
+.footer{background:#0d0d0d;color:#fff;padding:2.2rem 0;margin-top:4rem}
+.footer .mini-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin:.5rem 0}
+.footer .mini-links a{color:#fff;opacity:.8;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.2)}
+.footer .mini-links a:hover{opacity:1}
+.footer .contact a{color:#fff}
+.footer .copyright{opacity:.7;font-size:.9rem}

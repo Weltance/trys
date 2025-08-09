@@ -30,7 +30,23 @@ window.translations = {
     read_btn:"Read",
     cta_title:"Ready to start your journey?", cta_button:"Start Now",
     mission:"Weltance — Turning raw ideas into resilient brands."
-  },
+  
+    why_title:"Why Weltance"
+    why_promise_t:"Our Promise"
+    why_promise_d:"We turn raw ideas into resilient brands with a clear, no-fluff system you can execute today."
+    why_point_1:"Clarity over noise"
+    why_point_2:"Execution over theory"
+    why_point_3:"Compounding, not one-offs"
+    why_values_t:"Values"
+    why_v_1:"Discipline"
+    why_v_2:"Simplicity"
+    why_v_3:"Integrity"
+    why_v_4:"Momentum"
+    why_how_t:"How it Works"
+    why_how_1:"Position with precision"
+    why_how_2:"Ship offers fast"
+    why_how_3:"Install growth engines"
+    why_cta:"See the Builder Pack"},
   tr: {
     nav_home:"Ana Sayfa", nav_product:"Ürün", nav_about:"Hakkımızda", nav_contact:"İletişim",
     hero_title:"Fikirlerin Büyüdüğü Yer", hero_subtitle:"Dijital imparatorluğunu netlik ve güvenle inşa et.",
@@ -61,7 +77,23 @@ window.translations = {
     read_btn:"Oku",
     cta_title:"Hazır mısın?", cta_button:"Şimdi Başla",
     mission:"Weltance — Ham fikirleri dayanıklı markalara çeviriyoruz."
-  },
+  
+    why_title:"Neden Weltance"
+    why_promise_t:"Sözümüz"
+    why_promise_d:"Ham fikirleri, bugün uygulayabileceğin net ve gereksizsiz bir sistemle dayanıklı markalara çeviriyoruz."
+    why_point_1:"Gürültüye karşı netlik"
+    why_point_2:"Teoriye karşı icraat"
+    why_point_3:"Tek seferlik değil, bileşik büyüme"
+    why_values_t:"Değerler"
+    why_v_1:"Disiplin"
+    why_v_2:"Sadelik"
+    why_v_3:"Dürüstlük"
+    why_v_4:"Momentum"
+    why_how_t:"Nasıl Çalışır"
+    why_how_1:"Keskin konumlama"
+    why_how_2:"Teklifleri hızlıca yayınla"
+    why_how_3:"Büyüme motorlarını kur"
+    why_cta:"Builder Pack’i Gör"},
   fr: {
     nav_home:"Accueil", nav_product:"Produit", nav_about:"À propos", nav_contact:"Contact",
     hero_title:"Là où les idées prospèrent", hero_subtitle:"Construisez votre empire digital avec clarté et confiance.",
