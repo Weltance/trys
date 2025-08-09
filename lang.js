@@ -29,7 +29,8 @@ window.translations = {
     blog_title:"Latest notes", blog_1_t:"Zero→One Brand", blog_1_d:"Positioning in 30 minutes.", blog_2_t:"Launch System", blog_2_d:"Repeatable, with compounding.", blog_3_t:"Offer Math", blog_3_d:"Build pricing power, not discounts.",
     read_btn:"Read",
     cta_title:"Ready to start your journey?", cta_button:"Start Now",
-    mission:"Weltance — Turning raw ideas into resilient brands.", trusted_by:"Trusted by 500+ creators", t1_quote:"“Structured, no fluff. I shipped my first offer in 10 days.”", t1_name:"— Ava Martinez • Creator", t2_quote:"“Clear playbooks. My newsletter doubled in a month.”", t2_name:"— Noah Becker • Solo Founder", t3_quote:"“Finally a system that keeps momentum. Worth every cent.”", t3_name:"— Lena Petrova • Product Designer"},
+    mission:"Weltance — Turning raw ideas into resilient brands."
+  },
   tr: {
     nav_home:"Ana Sayfa", nav_product:"Ürün", nav_about:"Hakkımızda", nav_contact:"İletişim",
     hero_title:"Fikirlerin Büyüdüğü Yer", hero_subtitle:"Dijital imparatorluğunu netlik ve güvenle inşa et.",
@@ -59,7 +60,8 @@ window.translations = {
     blog_title:"Son notlar", blog_1_t:"Sıfır→Bir Marka", blog_1_d:"30 dakikada konumlama.", blog_2_t:"Lansman Sistemi", blog_2_d:"Tekrarlanabilir ve bileşik.", blog_3_t:"Teklif Matematiği", blog_3_d:"İndirim değil, değer inşa et.",
     read_btn:"Oku",
     cta_title:"Hazır mısın?", cta_button:"Şimdi Başla",
-    mission:"Weltance — Ham fikirleri dayanıklı markalara çeviriyoruz.", trusted_by:"500+ üretici tarafından güveniliyor", t1_quote:"“Yapılandırılmış, laf yok. İlk teklifimi 10 günde çıkardım.”", t1_name:"— Ava Martinez • Üretici", t2_quote:"“Net oyun kitapları. Bültenim bir ayda ikiye katlandı.”", t2_name:"— Noah Becker • Solo Kurucu", t3_quote:"“Momentum koruyan bir sistem sonunda. Her kuruşuna değer.”", t3_name:"— Lena Petrova • Ürün Tasarımcısı"},
+    mission:"Weltance — Ham fikirleri dayanıklı markalara çeviriyoruz."
+  },
   fr: {
     nav_home:"Accueil", nav_product:"Produit", nav_about:"À propos", nav_contact:"Contact",
     hero_title:"Là où les idées prospèrent", hero_subtitle:"Construisez votre empire digital avec clarté et confiance.",
@@ -89,7 +91,8 @@ window.translations = {
     blog_title:"Dernières notes", blog_1_t:"Marque Zéro→Un", blog_1_d:"Positionnement en 30 minutes.", blog_2_t:"Système de lancement", blog_2_d:"Répétable et cumulatif.", blog_3_t:"Maths de l'offre", blog_3_d:"Créez la valeur, pas les promos.",
     read_btn:"Lire",
     cta_title:"Prêt à commencer ?", cta_button:"Commencer",
-    mission:"Weltance — Transformer les idées brutes en marques résilientes.", trusted_by:"Plébiscité par 500+ créateurs", t1_quote:"« Structuré, sans blabla. J’ai lancé ma première offre en 10 jours. »", t1_name:"— Ava Martinez • Créatrice", t2_quote:"« Des playbooks clairs. Ma newsletter a doublé en un mois. »", t2_name:"— Noah Becker • Fondateur solo", t3_quote:"« Enfin un système qui garde l’élan. Ça les vaut largement. »", t3_name:"— Lena Petrova • Designer produit"},
+    mission:"Weltance — Transformer les idées brutes en marques résilientes."
+  },
   de: {
     nav_home:"Start", nav_product:"Produkt", nav_about:"Über uns", nav_contact:"Kontakt",
     hero_title:"Wo Ideen gedeihen", hero_subtitle:"Baue dein digitales Imperium mit Klarheit und Vertrauen.",
@@ -119,7 +122,8 @@ window.translations = {
     blog_title:"Neueste Notizen", blog_1_t:"Marke Null→Eins", blog_1_d:"Positionierung in 30 Minuten.", blog_2_t:"Launch‑System", blog_2_d:"Wiederholbar, mit Zinseszins.", blog_3_t:"Angebots‑Mathe", blog_3_d:"Wert aufbauen, keine Rabatte.",
     read_btn:"Lesen",
     cta_title:"Bereit zu starten?", cta_button:"Jetzt starten",
-    mission:"Weltance — Rohe Ideen in belastbare Marken verwandeln.", trusted_by:"Von 500+ Creators vertraut", t1_quote:"„Strukturiert, kein Blabla. Mein erstes Angebot in 10 Tagen versendet.“", t1_name:"— Ava Martinez • Creator", t2_quote:"„Klare Playbooks. Mein Newsletter hat sich in einem Monat verdoppelt.“", t2_name:"— Noah Becker • Solo‑Gründer", t3_quote:"„Endlich ein System, das Momentum hält. Jeden Cent wert.“", t3_name:"— Lena Petrova • Produktdesignerin"},
+    mission:"Weltance — Rohe Ideen in belastbare Marken verwandeln."
+  },
   ru: {
     nav_home:"Главная", nav_product:"Продукт", nav_about:"О нас", nav_contact:"Контакты",
     hero_title:"Где идеи расцветают", hero_subtitle:"Стройте цифровую империю с ясностью и уверенностью.",
@@ -149,7 +153,8 @@ window.translations = {
     blog_title:"Свежие заметки", blog_1_t:"Бренд Ноль→Один", blog_1_d:"Позиционирование за 30 минут.", blog_2_t:"Система запусков", blog_2_d:"Повторяемо, с ростом.", blog_3_t:"Математика оффера", blog_3_d:"Создавайте ценность, не скидки.",
     read_btn:"Читать",
     cta_title:"Готовы начать?", cta_button:"Начать",
-    mission:"Weltance — Превращаем сырые идеи в устойчивые бренды.", trusted_by:"Нам доверяют 500+ создателей", t1_quote:"«Структурировано, без воды. Первый оффер запустил за 10 дней.»", t1_name:"— Ава Мартинес • Создатель", t2_quote:"«Понятные плейбуки. Рассылка удвоилась за месяц.»", t2_name:"— Ной Беккер • Соло‑фаундер", t3_quote:"«Наконец система, сохраняющая темп. Стоит каждого цента.»", t3_name:"— Лена Петрова • Продукт‑дизайнер"},
+    mission:"Weltance — Превращаем сырые идеи в устойчивые бренды."
+  },
   ar: {
     nav_home:"الرئيسية", nav_product:"المنتج", nav_about:"من نحن", nav_contact:"تواصل",
     hero_title:"حيث تزدهر الأفكار", hero_subtitle:"ابنِ إمبراطوريتك الرقمية بوضوح وثقة.",

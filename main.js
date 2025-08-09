@@ -29,40 +29,12 @@
   backdrop.addEventListener("click", ()=> close());
 })();
 
-// i18n apply (fallback + dir/lang + event)
+// i18n apply (no intervals)
 (function(){
   const sel = document.getElementById('language-switcher');
-  const supported = ['en','tr','fr','de','ru','ar'];
-  let saved = localStorage.getItem('lang') || 'en';
-  if(sel) sel.value = saved;
-
-  function apply(lang){
-    const en = (window.translations && window.translations['en']) || {};
-    const dictRaw = (window.translations && window.translations[lang]) || {};
-    // Backfill: missing keys take EN value
-    const dict = new Proxy(dictRaw, { get:(t,k)=> (k in t ? t[k] : en[k]) });
-    document.documentElement.setAttribute('lang', lang);
-    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n'); if(dict[key]) el.textContent = dict[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-ph'); if(dict[key]) el.setAttribute('placeholder', dict[key]);
-    });
-    document.dispatchEvent(new CustomEvent('i18n:applied', { detail: { lang } }));
-  }
-
-  apply(saved);
-  sel?.addEventListener('change', ()=>{
-    const v = sel.value;
-    localStorage.setItem('lang', v);
-    apply(v);
-  });
-})();
+  const saved = localStorage.getItem('lang') || 'en';
   if(sel) sel.value = saved;
   function apply(lang){
-    document.documentElement.setAttribute('lang', lang);
-    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     const dict = (window.translations && window.translations[lang]) || {};
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const key = el.getAttribute('data-i18n'); if(dict[key]) el.textContent = dict[key];
@@ -110,30 +82,29 @@
   btn?.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
 })();
 
-// === Typed Headline (respects i18n:applied) ===
+// === Typed Headline (lightweight, i18n-aware) ===
 (function(){
   const el = document.getElementById('typed');
   if(!el) return;
   function getSet(){
     const lang = localStorage.getItem('lang') || 'en';
-    const en = (window.translations && window.translations['en']) || {};
-    const dictRaw = (window.translations && window.translations[lang]) || {};
-    const dict = new Proxy(dictRaw, { get:(t,k)=> (k in t ? t[k] : en[k]) });
+    const dict = (window.translations && window.translations[lang]) || {};
     return dict.typed_variants || ["Build. Scale. Dominate.","From Nobody to Brand.","Make it unmistakable."];
   }
-  let words = getSet(), i = 0, j = 0, dir = 1, hold = 0, raf;
+  let words = getSet(), i = 0, j = 0, dir = 1, hold = 0;
   function step(){
     const w = words[i];
-    if(hold>0){ hold-=16; raf = requestAnimationFrame(step); return; }
+    if(hold>0){ hold-=16; return requestAnimationFrame(step); }
     j += dir;
     el.textContent = w.slice(0, j);
     if(j >= w.length){ dir = -1; hold = 900; }
     else if(j <= 0){ dir = 1; i = (i+1)%words.length; }
-    raf = requestAnimationFrame(step);
+    requestAnimationFrame(step);
   }
-  raf = requestAnimationFrame(step);
-  function refresh(){ cancelAnimationFrame(raf); words = getSet(); i=0; j=0; dir=1; hold=0; raf = requestAnimationFrame(step); }
-  document.addEventListener('i18n:applied', refresh);
+  requestAnimationFrame(step);
+  // refresh on language change
+  const sel = document.getElementById('language-switcher');
+  sel && sel.addEventListener('change', ()=>{ words = getSet(); i = 0; j = 0; dir = 1; hold = 0; });
 })();
 
 // === Stat Counters (IO + rAF) ===
