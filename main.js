@@ -21,30 +21,64 @@
   const toggle=document.getElementById("nav-toggle");
   let backdrop=document.querySelector(".nav-backdrop");
   if(!backdrop){ backdrop=document.createElement("div"); backdrop.className="nav-backdrop"; document.body.appendChild(backdrop); }
-  function close(){ nav.classList.remove("open"); toggle.setAttribute("aria-expanded","false"); toggle.setAttribute("aria-label","Open menu"); }
-  function open(){ nav.classList.add("open"); toggle.setAttribute("aria-expanded","true"); toggle.setAttribute("aria-label","Close menu"); }
+  function isInsideNav(target){ return !!(target && (target.closest(".nav") || target.id==="language-switcher")); }
+  function close(){ nav.classList.remove("open"); toggle?.setAttribute("aria-expanded","false"); toggle?.setAttribute("aria-label","Open menu"); }
+  function open(){ nav.classList.add("open"); toggle?.setAttribute("aria-expanded","true"); toggle?.setAttribute("aria-label","Close menu"); }
   toggle?.addEventListener("click",(e)=>{ e.stopPropagation(); nav.classList.contains("open")?close():open(); });
-  document.addEventListener("click",()=> close());
+  document.addEventListener("click",(e)=>{ if(!isInsideNav(e.target)) close(); });
   document.getElementById("menu")?.addEventListener("click",(e)=> e.stopPropagation());
   backdrop.addEventListener("click", ()=> close());
-})();
-
-// i18n apply (no intervals)
-(function(){
-  const sel = document.getElementById('language-switcher');
-  const saved = localStorage.getItem('lang') || 'en';
-  if(sel) sel.value = saved;
-  function apply(lang){
-    const dict = (window.translations && window.translations[lang]) || {};
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n'); if(dict[key]) el.textContent = dict[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-ph'); if(dict[key]) el.setAttribute('placeholder', dict[key]);
+  const langSel = document.getElementById("language-switcher");
+  if(langSel){
+    ["click","mousedown","mouseup","touchstart"].forEach(ev=>{
+      langSel.addEventListener(ev, (e)=> e.stopPropagation(), {passive:true});
     });
   }
-  apply(saved);
-  sel?.addEventListener('change', ()=>{ const v=sel.value; localStorage.setItem('lang', v); apply(v); });
+})();
+
+// i18n apply (robust) + lang/dir + typed refresh
+(function(){
+  const sel = document.getElementById('language-switcher');
+  const rootHtml = document.documentElement;
+  const supported = ['en','tr','ru','fr','ar','de'];
+  const saved = localStorage.getItem('lang');
+  let initial = saved && supported.includes(saved) ? saved : 'en';
+  if(sel){
+    // normalize options to supported
+    sel.querySelectorAll('option').forEach(opt=>{
+      if(!supported.includes(opt.value)) opt.remove();
+    });
+    if(!sel.querySelector('option[value="'+initial+'"]')) initial='en';
+    sel.value = initial;
+  }
+  function setLangMeta(lang){ document.documentElement.setAttribute('lang', lang); document.documentElement.setAttribute('dir', lang==='ar'?'rtl':'ltr'); }
+  function dictOf(lang){
+    return (window.translations && window.translations[lang]) || {};
+  }
+  function apply(lang){
+    setLangMeta(lang);
+    const dict = dictOf(lang);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n'); if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-ph'); if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+    // refresh typed variants
+    const typedEl = document.getElementById('typed');
+    if(typedEl){
+      const variants = Array.isArray(dict.typed_variants) ? dict.typed_variants : [];
+      // simple reset: take the first variant
+      if(variants.length) typedEl.textContent = variants[0];
+    }
+  }
+  apply(initial);
+  sel && sel.addEventListener('change', (e)=>{
+    e.stopPropagation();
+    const v = sel.value;
+    localStorage.setItem('lang', v);
+    apply(v);
+  });
 })();
 
 // Manual carousel only
