@@ -532,3 +532,8 @@ section.hero{
 /* Language select visibility (reinforced) */
 #language-switcher{ background: var(--surface) !important; color: var(--fg) !important; border:1px solid var(--line); }
 #language-switcher option{ color: var(--fg); background: var(--surface); }
+
+/* Product cover image fit */
+.mock-frame{ position:relative; overflow:hidden; border-radius:16px; border:1px solid var(--line); }
+.mock-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.mock-gradient{ pointer-events:none; }
