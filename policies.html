@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weltance – Where Ideas Thrive</title>
+
+    <meta
+      name="description"
+      content="Weltance helps creators build resilient brands — fast. Clear systems, no fluff."
+    />
+    <meta property="og:title" content="Weltance — Where Ideas Thrive" />
+    <meta
+      property="og:description"
+      content="Build your digital empire with clarity and confidence."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/logo.png" />
+    <meta property="og:site_name" content="Weltance" />
+    <meta name="theme-color" content="#2c4f87" />
+
+    <link rel="icon" href="./assets/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="lang.js"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="progressbar"><span id="scroll-progress"></span></div>
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="./assets/logo.png" alt="Weltance Logo" />
+          <span>Weltance</span>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <button
+            id="nav-toggle"
+            class="icon-btn hamburger"
+            aria-expanded="false"
+            aria-controls="menu"
+            aria-label="Open menu"
+          >
+            <span class="bar"></span><span class="bar"></span
+            ><span class="bar"></span>
+          </button>
+          <button
+            id="theme-toggle"
+            class="icon-btn"
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            🌙
+          </button>
+          <div class="nav-links">
+            <a href="https://weltance.com" data-i18n="nav_home">Home</a>
+            <a href="#product" data-i18n="nav_product">Product</a>
+            <a href="#why" data-i18n="nav_about">About</a>
+            <a href="#contact" data-i18n="nav_contact">Contact</a>
+            <select id="language-switcher" aria-label="Language">
+              <option value="en">EN</option>
+              <option value="tr">TR</option>
+              <option value="ru">RU</option>
+              <option value="fr">FR</option>
+              <option value="ar">AR</option>
+              <option value="de">DE</option>
+            </select>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="policies-only">
+      <div class="container">
+        <h1 class="po-title" data-i18n="policies_title">Policies</h1>
+        <div class="po-grid">
+          <aside class="po-toc" aria-label="On this page">
+            <a href="#terms" class="po-toc-link" data-i18n="terms_title"
+              >Terms of Use</a
+            >
+            <a href="#privacy" class="po-toc-link" data-i18n="privacy_title"
+              >Privacy Policy</a
+            >
+            <a href="#refund" class="po-toc-link" data-i18n="refund_title"
+              >Refund Policy</a
+            >
+          </aside>
+          <section class="po-content">
+            <article id="terms" class="po-card">
+              <h2 data-i18n="terms_title">Terms of Use</h2>
+              <p class="po-upd">
+                <span data-i18n="last_updated">Last Updated:</span>
+                <span data-i18n="terms_updated">August 14, 2025</span>
+              </p>
+              <p data-i18n="terms_intro">
+                Welcome to Weltance. By accessing or purchasing from our
+                website, you agree to be bound by the following terms:
+              </p>
+              <ol class="po-list">
+                <li data-i18n="terms_1">
+                  Eligibility – You must be at least 18 years old or have
+                  parental consent to use our services.
+                </li>
+                <li data-i18n="terms_2">
+                  Products – All products are digital and delivered instantly
+                  via the provided download link or access method.
+                </li>
+                <li data-i18n="terms_3">
+                  No Refunds – All sales are final. Please read product
+                  descriptions carefully before purchase.
+                </li>
+                <li data-i18n="terms_4">
+                  Intellectual Property – All content, products, and materials
+                  provided by Weltance are protected by copyright and may not be
+                  reproduced, shared, or resold without written permission.
+                </li>
+                <li data-i18n="terms_5">
+                  Limitation of Liability – Weltance is not liable for any
+                  damages or losses resulting from the use or inability to use
+                  our products or services.
+                </li>
+                <li data-i18n="terms_6">
+                  Changes to Terms – We may update these Terms of Use at any
+                  time, and continued use of our services means you accept the
+                  changes.
+                </li>
+              </ol>
+            </article>
+
+            <article id="privacy" class="po-card">
+              <h2 data-i18n="privacy_title">Privacy Policy</h2>
+              <p class="po-upd">
+                <span data-i18n="last_updated">Last Updated:</span>
+                <span data-i18n="privacy_updated">August 14, 2025</span>
+              </p>
+              <p data-i18n="privacy_intro">
+                At Weltance, we respect your privacy and are committed to
+                protecting your personal data.
+              </p>
+              <ol class="po-list">
+                <li data-i18n="privacy_1">
+                  Information We Collect – When you make a purchase, we collect
+                  information such as your name, email address, and payment
+                  details.
+                </li>
+                <li data-i18n="privacy_2">
+                  How We Use Your Information – We use your information to
+                  process orders, send product access, and provide customer
+                  support.
+                </li>
+                <li data-i18n="privacy_3">
+                  Data Security – We implement industry-standard measures to
+                  protect your personal information from unauthorized access,
+                  disclosure, or misuse.
+                </li>
+                <li data-i18n="privacy_4">
+                  Third-Party Services – We may use secure third-party payment
+                  processors. These services have their own privacy policies.
+                </li>
+                <li data-i18n="privacy_5">
+                  Your Rights – You may request access to, correction of, or
+                  deletion of your personal data by contacting us at
+                  theweltance@gmail.com.
+                </li>
+                <li data-i18n="privacy_6">
+                  Changes to Policy – We may update this Privacy Policy as
+                  needed.
+                </li>
+              </ol>
+            </article>
+
+            <article id="refund" class="po-card">
+              <h2 data-i18n="refund_title">Refund Policy</h2>
+              <p class="po-upd">
+                <span data-i18n="last_updated">Last Updated:</span>
+                <span data-i18n="refund_updated">August 14, 2025</span>
+              </p>
+              <p data-i18n="refund_intro">
+                Weltance provides digital products only. Due to the nature of
+                digital goods:
+              </p>
+              <ul class="po-list bullets">
+                <li data-i18n="refund_b1">All sales are final.</li>
+                <li data-i18n="refund_b2">
+                  We do not offer refunds, returns, or exchanges.
+                </li>
+                <li data-i18n="refund_b3">
+                  Please review the product description carefully before making
+                  a purchase.
+                </li>
+                <li data-i18n="refund_b4">
+                  If you encounter technical issues accessing your product,
+                  contact us at theweltance@gmail.com, and we will assist you.
+                </li>
+              </ul>
+            </article>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p class="mission" data-i18n="mission">
+          Weltance — Turning raw ideas into resilient brands.
+        </p>
+        <p class="copyright">© 2025 Weltance. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="https://youtube.com/@weltance" target="_blank"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+              alt="YouTube"
+          /></a>
+          <a href="https://x.com/weltance?s=21" target="_blank"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"
+              alt="X"
+          /></a>
+          <a href="https://www.tiktok.com/@weltance" target="_blank"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+              alt="TikTok"
+          /></a>
+          <a href="https://www.instagram.com/theweltance" target="_blank"
+            ><img
+              src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+              alt="Instagram"
+          /></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
